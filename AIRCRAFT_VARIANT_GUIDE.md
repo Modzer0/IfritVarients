@@ -361,3 +361,39 @@ If you want to force a factory to produce your variant via code:
 Factory factory = someBuilding.GetComponent<Factory>();
 factory.SetFactory(yourClone.jsonKey, 900f); // 900 seconds = 15 minutes
 ```
+
+
+---
+
+## Step 6: Supply System Integration
+
+The supply system tracks how many of each aircraft a faction has available.
+
+### How Supply Works
+
+```
+FactionHQ.AircraftSupply  (SyncDictionary<AircraftDefinition, RuntimeSupply>)
+    ├── Factory.ProduceUnit() → AddSupplyUnit(def, +1)
+    ├── Aircraft returns to base → AddSupplyUnit(def, +1)
+    ├── Hangar.TrySpawnAircraft() → AddSupplyUnit(def, -1)
+    └── Mission start → ModifyUnitSupply() from saved supply counts
+```
+
+### Player Aircraft Ownership
+
+Players must "own" an airframe to fly it:
+1. Player gets allocation (money) based on rank and faction funds
+2. Player buys an airframe: `CreditAirframe(def, 1, false)` — deducts from allocation
+3. Or receives one from supply: `CreditAirframe(def, 1, true)` — reserved from faction supply
+4. Player can fly if `OwnsAirframe(def, true)` returns true
+
+### No Extra Patches Needed
+
+Since your clone is a proper `AircraftDefinition` registered in Encyclopedia, the supply system handles it natively:
+- `ModifyUnitSupply` switches on `AircraftDefinition` type — your clone matches
+- `AircraftSupply` dictionary uses the definition object as key — your clone is a distinct object
+- `AddSupplyUnit` / `GetUnitSupply` work automatically
+
+### Mission Editor: Starting Supply
+
+In the mission editor's faction settings tab (`FactionSettingsTab`), the supply unit dropdown is populated from `Encyclopedia.i.GetAircraftAndVehicles()`. Your clone appears here automatically. Mission designers can set starting supply counts for your variant per faction.
