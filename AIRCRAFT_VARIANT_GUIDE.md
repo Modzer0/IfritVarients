@@ -441,3 +441,24 @@ public static class ThrustPatch
 | Flap behavior | `ControlSurface.UpdateJobFields` | Lock flaps at speed |
 | Speed warnings | `SpeedGauge.Refresh` | Suppress overspeed indicators |
 | HUD elements | `FlightHud.Update` | Add custom HUD indicators |
+
+
+---
+
+## Complete Patch List (Minimum Viable Variant)
+
+These are the minimum patches needed for a fully functional aircraft variant:
+
+| # | Patch Target | Type | Purpose |
+|---|---|---|---|
+| 1 | `Encyclopedia.AfterLoad` | Prefix | Clone definition, add to aircraft list |
+| 2 | `NewUnitPanel.Awake` | Prefix | Clear static cache so editor sees new aircraft |
+| 3 | `Hangar.GetAvailableAircraft` | Postfix | Inject clone into hangar aircraft lists |
+| 4 | `Hangar.CanSpawnAircraft` | Postfix | Allow clone to spawn from hangars |
+| 5 | `Hangar.TrySpawnAircraft` | Prefix | Flag when clone is being spawned |
+| 6 | `Spawner.SpawnAircraft` | Postfix | Reassign definition on spawned aircraft |
+| 7 | `AircraftSelectionMenu.SpawnPreview` | Postfix | Fix preview definition in selection menu |
+
+Patches 1-2 cover Encyclopedia + Editor. Patches 3-7 cover in-game spawning.
+
+Factory production and supply work automatically once the clone is in Encyclopedia.
