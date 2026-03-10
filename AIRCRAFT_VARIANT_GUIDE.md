@@ -145,3 +145,58 @@ public static void Postfix(Encyclopedia __instance)
 ```
 
 **Recommendation**: Use PREFIX. It's simpler and less error-prone.
+
+
+---
+
+## Step 3: Make It Appear in the Mission Editor
+
+The mission editor's `NewUnitPanel.Awake()` populates a static dictionary of `UnitOptionProvider` objects from `Encyclopedia.i.aircraft`. This dictionary is built once and cached statically — it survives scene reloads.
+
+```csharp
+// Game code (simplified):
+if (unitProviders.Count == 0)
+{
+    unitProviders.Add("aircraft", UnitOptionProvider.Create<AircraftDefinition>(
+        Encyclopedia.i.aircraft));
+    // ... vehicles, buildings, ships, etc.
+}
+```
+
+`UnitOptionProvider.Create<T>()` filters out definitions where `disabled == true`, sorts by `unitName`, and stores the result.
+
+### The Problem
+
+If `NewUnitPanel.Awake()` runs before your Encyclopedia patch, the static cache won't include your variant. Even if it runs after, the cache persists across scene loads.
+
+### The Fix: Clear the Static Cache
+
+Patch `NewUnitPanel.Awake` with a prefix that clears the static dictionary:
+
+```csharp
+[HarmonyPatch(typeof(NuclearOption.MissionEditorScripts.Buttons.NewUnitPanel), "Awake")]
+public static class EditorInjectPatch
+{
+    private static readonly FieldInfo unitProvidersField =
+        AccessTools.Field(typeof(NewUnitPanel), "unitProviders");
+
+    public static void Prefix()
+    {
+        var dict = unitProvidersField?.GetValue(null) as IDictionary;
+        if (dict != null && dict.Count > 0)
+            dict.Clear();  // Forces Awake() to rebuild from current Encyclopedia
+    }
+}
+```
+
+This ensures `Awake()` re-reads `Encyclopedia.i.aircraft` (which now includes your clone) every time the editor opens.
+
+### Requirements for Editor Visibility
+
+- `clone.disabled = false`
+- Clone is in `Encyclopedia.i.aircraft`
+- `NewUnitPanel.unitProviders` cache is cleared before `Awake` runs
+
+### Factory Production Dropdown
+
+The mission editor's `BuildingOptions` class generates the factory production dropdown from `Encyclopedia.i.GetAircraftAndVehicles()`, which returns `aircraft.Concat(vehicles)`. It filters out `disabled == true` entries. So if your clone is registered in Encyclopedia with `disabled = false`, it will automatically appear in the factory production type dropdown — no extra patches needed.
