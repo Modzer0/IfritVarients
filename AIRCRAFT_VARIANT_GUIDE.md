@@ -494,3 +494,64 @@ Factory production and supply work automatically once the clone is in Encycloped
 - `Spawner.SpawnAircraft` instantiates the prefab and reads `definition` from the `Aircraft` component on the prefab. This always returns the original's definition.
 - Your postfix on `SpawnAircraft` must reassign `definition` before any other code reads it.
 - The `unitName` is set from `component.definition.unitName` in `SpawnAircraft` — you may need to override this too.
+
+
+---
+
+## Quick Reference: Data Flow Diagram
+
+```
+[Mod Loads]
+    │
+    ▼
+Encyclopedia.AfterLoad (PREFIX)
+    ├── Clone AircraftDefinition
+    ├── Clone AircraftParameters
+    ├── Add to Encyclopedia.i.aircraft
+    └── (AfterLoad handles Lookup, IndexLookup, CacheMass)
+    │
+    ▼
+[Mission Editor Opens]
+    │
+    ▼
+NewUnitPanel.Awake (PREFIX clears cache)
+    └── Awake rebuilds from Encyclopedia.i.aircraft
+        └── Clone appears in aircraft tab ✓
+    │
+    ▼
+BuildingOptions.GenerateUnitList()
+    └── Reads Encyclopedia.i.GetAircraftAndVehicles()
+        └── Clone appears in factory dropdown ✓
+    │
+    ▼
+FactionSettingsTab (supply setup)
+    └── Reads Encyclopedia.i.GetAircraftAndVehicles()
+        └── Clone appears in supply dropdown ✓
+    │
+    ▼
+[Game Starts / Mission Loads]
+    │
+    ▼
+Factory.SetFactory(jsonKey, interval)
+    └── Encyclopedia.Lookup[jsonKey] → clone definition
+        └── ProduceUnit() → FactionHQ.AddSupplyUnit(clone, 1) ✓
+    │
+    ▼
+Airbase.GetAvailableAircraft()
+    └── Hangar.GetAvailableAircraft() (PATCHED)
+        └── Clone injected into available list ✓
+    │
+    ▼
+AircraftSelectionMenu.Refresh()
+    └── Lists available aircraft from airbase
+        └── Clone appears in selection ✓
+    │
+    ▼
+Player buys/receives airframe
+    └── FactionHQ.AircraftSupply tracks clone separately ✓
+    │
+    ▼
+Hangar.TrySpawnAircraft (PATCHED prefix flags clone)
+    └── Spawner.SpawnAircraft (PATCHED postfix reassigns definition)
+        └── Aircraft spawns with correct definition ✓
+```
