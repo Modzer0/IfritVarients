@@ -49,7 +49,7 @@ namespace KR67EX
                 "Speed limit in m/s (850 ≈ Mach 2.5 at sea level)");
             GLimit = Config.Bind("Flight", "GLimit", 12f,
                 "G overload limit");
-            JammerIntensity = Config.Bind("EW", "JammerIntensity", 10f,
+            JammerIntensity = Config.Bind("EW", "JammerIntensity", 12f,
                 "Radar jammer intensity");
             CostMultiplier = Config.Bind("General", "CostMultiplier", 2f,
                 "Cost multiplier vs KR-67A base cost");
