@@ -323,3 +323,41 @@ public static class PreviewPatch
     }
 }
 ```
+
+
+---
+
+## Step 5: Set Up Factory Production
+
+Factories produce units on a timer. The `Factory` component on a building calls `FactionHQ.AddSupplyUnit(productionUnit, 1)` each interval.
+
+### How Factories Work
+
+1. A building prefab has a `Factory` component with `aircraft = true` or `vehicles = true`
+2. In the mission editor, the `BuildingOptions` panel shows a production dropdown populated from `Encyclopedia.i.GetAircraftAndVehicles()` (filters `disabled == true`)
+3. The selected production type is saved as `SavedBuilding.FactoryOptions.productionType` (the prefab name string)
+4. At runtime, `Factory.SetFactory(productionType, productionInterval)` looks up the `UnitDefinition` via `Encyclopedia.Lookup[productionType]`
+5. Every `productionInterval` seconds, `ProduceUnit()` calls `FactionHQ.AddSupplyUnit(productionUnit, 1)`
+
+### What You Need for Factory Support
+
+Since your clone is registered in `Encyclopedia.Lookup` with a unique `jsonKey`, and `GetAircraftAndVehicles()` includes it, factories can produce your variant with **no extra patches**:
+
+1. Your clone appears in the editor's factory production dropdown automatically
+2. Mission designers select it as the production type
+3. The factory looks it up via `Encyclopedia.Lookup[jsonKey]` at runtime
+4. `AddSupplyUnit` adds it to `FactionHQ.AircraftSupply`
+
+### Important: productionType Uses jsonKey
+
+`Factory.SetFactory` does `Encyclopedia.Lookup.TryGetValue(productionType, ...)`. The `productionType` stored in the mission JSON is the `jsonKey`. So your clone's `jsonKey` must be stable across mod versions — don't change it after missions are saved with it.
+
+### Programmatic Factory Setup (Optional)
+
+If you want to force a factory to produce your variant via code:
+
+```csharp
+// Find a factory building and set its production
+Factory factory = someBuilding.GetComponent<Factory>();
+factory.SetFactory(yourClone.jsonKey, 900f); // 900 seconds = 15 minutes
+```
