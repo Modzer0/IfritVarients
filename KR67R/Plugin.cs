@@ -32,9 +32,13 @@ namespace KR67R
         internal const string CloneDisplayName = "KR-67R";
         internal const string CloneCode = "KR-67R";
         internal const string CloneDescription =
-            "High-altitude reconnaissance variant. No radar. Forward bay replaced by " +
-            "long-range optical sensor. Reduced RCS. Wing pylons removed. " +
-            "Optimized for Mach 5 cruise at 80,000ft.";
+            "The KR-67R is a heavily redesigned KR-67 designed for stealth recon missions. " +
+            "It has a tiny cross-section and a camera with a 50NM range on the bottom of the aircraft. " +
+            "It can carry a small amount of ordnance but it is highly advised not to employ any as the " +
+            "weapon bay doors opening will spike the RCS of the craft well into the visible range of any " +
+            "nearby aircraft or air defense. It has a service ceiling at 85k feet and an operational ceiling " +
+            "at 80kft. On the afterburner the KR-67R will approach Mach 5 at altitude. Unlike the " +
+            "experimental X variant it does not have scramjets.";
 
         // 50 NM in meters
         internal const float OpticalRange50NM = 92600f;
