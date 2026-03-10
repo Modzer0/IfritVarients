@@ -397,3 +397,47 @@ Since your clone is a proper `AircraftDefinition` registered in Encyclopedia, th
 ### Mission Editor: Starting Supply
 
 In the mission editor's faction settings tab (`FactionSettingsTab`), the supply unit dropdown is populated from `Encyclopedia.i.GetAircraftAndVehicles()`. Your clone appears here automatically. Mission designers can set starting supply counts for your variant per faction.
+
+
+---
+
+## Step 7: Differentiate Behavior at Runtime
+
+Since the clone shares the original's prefab, all spawned instances have identical components. To make the variant behave differently, use Harmony patches that check which definition the aircraft is using.
+
+### Pattern: Check Definition in Patches
+
+```csharp
+private static bool IsOurVariant(Aircraft aircraft)
+{
+    return aircraft != null &&
+           aircraft.definition != null &&
+           aircraft.definition.jsonKey == "KR-67X_SuperIfrit";
+}
+
+// Example: modify engine thrust for our variant
+[HarmonyPatch(typeof(Turbojet), "FixedUpdate")]
+public static class ThrustPatch
+{
+    [HarmonyPrefix]
+    public static void Prefix(Turbojet __instance)
+    {
+        Aircraft aircraft = __instance.GetComponentInParent<Aircraft>();
+        if (!IsOurVariant(aircraft)) return;
+
+        // Apply custom thrust modifications...
+    }
+}
+```
+
+### Common Behavioral Patches
+
+| What to Change | Patch Target | Notes |
+|---|---|---|
+| Engine thrust | `Turbojet.FixedUpdate` | Modify thrust, maxSpeed, altitude curve |
+| Afterburner | `JetNozzle.Thrust` | Modify afterburner output |
+| Flight stability | `RelaxedStabilityController.FilterInput` | Dampen/amplify stability gains |
+| FBW response | `ControlsFilter.Filter` | Modify fly-by-wire behavior |
+| Flap behavior | `ControlSurface.UpdateJobFields` | Lock flaps at speed |
+| Speed warnings | `SpeedGauge.Refresh` | Suppress overspeed indicators |
+| HUD elements | `FlightHud.Update` | Add custom HUD indicators |
