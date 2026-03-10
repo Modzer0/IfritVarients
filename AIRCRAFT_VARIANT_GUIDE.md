@@ -86,3 +86,62 @@ clone.aircraftInfo = UnityEngine.Object.Instantiate(original.aircraftInfo);
 ```
 
 **Critical**: `aircraftParameters` MUST be a separate clone. If you just reference the original's, any changes affect both aircraft.
+
+
+---
+
+## Step 2: Register in Encyclopedia
+
+The clone must be added to three data structures:
+
+1. `Encyclopedia.i.aircraft` — the master list
+2. `Encyclopedia.Lookup` — dictionary keyed by `jsonKey` (used for save/load)
+3. `Encyclopedia.i.IndexLookup` — list with index used for network serialization
+
+### Approach A: PREFIX on Encyclopedia.AfterLoad (Recommended)
+
+If you add your clone to `Encyclopedia.i.aircraft` in a **prefix** patch, the original `AfterLoad` method will automatically:
+- Call `CacheMass()` on your clone
+- Add it to `Lookup` via `jsonKey`
+- Assign `LookupIndex` via `AddWithIndex`
+- Sort by value
+
+```csharp
+[HarmonyPatch(typeof(Encyclopedia), "AfterLoad")]
+public static class EncyclopediaPatch
+{
+    [HarmonyPrefix]
+    public static void Prefix(Encyclopedia __instance)
+    {
+        // Create clone here (see Step 1)...
+        __instance.aircraft.Add(clone);
+        // AfterLoad will handle Lookup, IndexLookup, CacheMass, sorting
+    }
+}
+```
+
+### Approach B: POSTFIX on Encyclopedia.AfterLoad
+
+If you use a postfix, you must manually register everything:
+
+```csharp
+[HarmonyPostfix]
+public static void Postfix(Encyclopedia __instance)
+{
+    // Create clone...
+    __instance.aircraft.Add(clone);
+
+    // Manual Lookup registration
+    if (!Encyclopedia.Lookup.ContainsKey(clone.jsonKey))
+        Encyclopedia.Lookup.Add(clone.jsonKey, clone);
+
+    // Manual IndexLookup registration
+    ((INetworkDefinition)clone).LookupIndex = __instance.IndexLookup.Count;
+    __instance.IndexLookup.Add(clone);
+
+    // Must call CacheMass (reads prefab rigidbody mass)
+    clone.CacheMass();
+}
+```
+
+**Recommendation**: Use PREFIX. It's simpler and less error-prone.
