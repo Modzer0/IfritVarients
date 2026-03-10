@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: D:\SteamLibrary\steamapps\common\Nuclear Option\BepInEx\plugins\qol_1.1.6.3b1.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D65B5609-D1E2-4574-AAA4-5F92DD213842}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>qol</AssemblyName>
+    <ApplicationVersion>1.1.6.3</ApplicationVersion>
+    <RootNamespace>qol</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" />
+    <Reference Include="Mirage" />
+    <Reference Include="Rewired_Core" />
+    <Reference Include="Unity.RenderPipelines.Core.Runtime" />
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime" />
+    <Reference Include="Unity.TextMeshPro" />
+    <Reference Include="UnityEngine.AssetBundleModule" />
+    <Reference Include="UnityEngine.AudioModule" />
+    <Reference Include="UnityEngine.CoreModule" />
+    <Reference Include="UnityEngine.ImageConversionModule" />
+    <Reference Include="UnityEngine.ParticleSystemModule" />
+    <Reference Include="UnityEngine.PhysicsModule" />
+    <Reference Include="UnityEngine.TextRenderingModule" />
+    <Reference Include="UnityEngine.UI" />
+    <Reference Include="UnityEngine.UIElementsModule" />
+    <Reference Include="UnityEngine.UIModule" />
+    <Reference Include="com.rlabrecque.steamworks.net" />
+    <Reference Include="netstandard" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="QOLPlugin.cs" />
+    <Compile Include="System\Runtime\CompilerServices\RefSafetyRulesAttribute.cs" />
+    <Compile Include="MyPluginInfo.cs" />
+    <Compile Include="PatchConfig\PatchConfigAttribute.cs" />
+    <Compile Include="PatchConfig\PatchConfigRegistry.cs" />
+    <Compile Include="PatchConfig\PatchValueAttribute.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Weapons\AAM3QuadExtraModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Weapons\CruiseMissileBoosterModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Weapons\WeaponVariantModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Weapons\WeaponVariantPostProcessors.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Visual\AttackHeloTurretModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Visual\HorseMeshModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Visual\WeaponIconModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Materials\GlassMaterialModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Materials\NavLightMaterialModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\DecalSizeModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\ExplosionParticleModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\FlareEffectModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\MissileSmokeTrailModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\ParticleEmissionModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\RailgunParticleModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\StorageTankExplosionModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Effects\WaterSplashModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\AAM4SeekerModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\AircraftLoadoutModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\AircraftSlingLoadModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\AnnexArrestorModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\AssaultCarrierLaserTurretModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\ChicaneGunFixModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\CorvetteBalanceModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\ECMPodInfoModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\EW1LaserModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\FireDamageModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\HeloRadarJammerModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\LCACTurretModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\MBTEjectionModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\MedusaAirbrakeModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\MunitionsPalletRenameModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\PropFanEfficiencyModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\PylonRenameModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\RadarParametersModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\RailcannonPodModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\ShardFireControlModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\ShipArmorModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\TargetDetectorModifier.cs" />
+    <Compile Include="WeaponLoading\Modifiers\Balance\UH1PilotSwapModifier.cs" />
+    <Compile Include="WeaponLoading\Core\IEntityModifier.cs" />
+    <Compile Include="WeaponLoading\Core\ModificationContext.cs" />
+    <Compile Include="WeaponLoading\Core\ModificationRegistry.cs" />
+    <Compile Include="WeaponLoading\Configs\AircraftLoadoutConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\AnnexArrestorConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\DecalSizeConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\EW1LaserConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\ExplosionConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\FireDamageConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\FlareEffectConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\HeloRadarJammerConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\HorseMeshConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\MaterialConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\MBTEjectionConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\MedusaAirbrakeConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\MissileSmokeTrailConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\NavLightConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\ParticleEmissionConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\PropFanEfficiencyConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\RadarParametersConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\RailcannonPodConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\RailgunParticleConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\ShardFireControlConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\ShipArmorConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\StorageTankExplosionConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\TargetDetectorConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\WaterSplashConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\WeaponIconConfigs.cs" />
+    <Compile Include="WeaponLoading\Configs\VariantType.cs" />
+    <Compile Include="WeaponLoading\Configs\MountDef.cs" />
+    <Compile Include="WeaponLoading\Configs\WeaponVariantDef.cs" />
+    <Compile Include="WeaponLoading\Configs\WeaponVariantConfigs.cs" />
+    <Compile Include="Utilities\PathLookup.cs" />
+    <Compile Include="Utilities\ReflectionHelpers.cs" />
+    <Compile Include="Utilities\ResourceLookup.cs" />
+    <Compile Include="Utilities\TraverseExtensions.cs" />
+    <Compile Include="Utilities\UIPathHelpers.cs" />
+    <Compile Include="Utilities\UnityExtensions.cs" />
+    <Compile Include="UI\Theming\MenuThemer.cs" />
+    <Compile Include="UI\Theming\UIThemeConfigs.cs" />
+    <Compile Include="UI\Branding\BackgroundManager.cs" />
+    <Compile Include="UI\Branding\VersionWatermark.cs" />
+    <Compile Include="Multiplayer\CoroutineRunner.cs" />
+    <Compile Include="Multiplayer\LobbyHelper.cs" />
+    <Compile Include="Multiplayer\ModVerificationManager.cs" />
+    <Compile Include="HarmonyPatches\Configs\AircraftDefaultsConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\FactionConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\KillMessageConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\LoadoutAdapterConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\LoadoutRemapConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\LogFilterConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\NightVisionConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\PilotConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\RankConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\ShipTypeConfigs.cs" />
+    <Compile Include="HarmonyPatches\Configs\WeaponMountConfigs.cs" />
+    <Compile Include="FieldModification\Processors\ActiveProcessor.cs" />
+    <Compile Include="FieldModification\Processors\AircraftProcessor.cs" />
+    <Compile Include="FieldModification\Processors\AudioProcessor.cs" />
+    <Compile Include="FieldModification\Processors\ColorProcessor.cs" />
+    <Compile Include="FieldModification\Processors\MissileDefinitionProcessor.cs" />
+    <Compile Include="FieldModification\Processors\ObjectProcessor.cs" />
+    <Compile Include="FieldModification\Processors\PartProcessor.cs" />
+    <Compile Include="FieldModification\Processors\ShipProcessor.cs" />
+    <Compile Include="FieldModification\Processors\StandardProcessor.cs" />
+    <Compile Include="FieldModification\Processors\VectorProcessor.cs" />
+    <Compile Include="FieldModification\Processors\VehicleProcessor.cs" />
+    <Compile Include="FieldModification\Processors\WeaponInfoEditProcessor.cs" />
+    <Compile Include="FieldModification\Processors\WeaponInfoProcessor.cs" />
+    <Compile Include="FieldModification\Helpers\FieldHelpers.cs" />
+    <Compile Include="FieldModification\Helpers\ResourceHelpers.cs" />
+    <Compile Include="FieldModification\Core\FieldProcessingContext.cs" />
+    <Compile Include="FieldModification\Core\FieldProcessorRegistry.cs" />
+    <Compile Include="FieldModification\Core\IFieldProcessor.cs" />
+    <Compile Include="FieldModification\Configs\FieldModificationConfigs.cs" />
+    <Compile Include="CommandProcessing\Processing\ConfigLoader.cs" />
+    <Compile Include="CommandProcessing\Processing\ProcessingContext.cs" />
+    <Compile Include="CommandProcessing\Processing\SingleThreadProcessor.cs" />
+    <Compile Include="CommandProcessing\Processing\ThreadedProcessor.cs" />
+    <Compile Include="CommandProcessing\Processing\UIProgressReporter.cs" />
+    <Compile Include="CommandProcessing\Helpers\StringHelpers.cs" />
+    <Compile Include="CommandProcessing\Helpers\ValidationHelpers.cs" />
+    <Compile Include="CommandProcessing\Handlers\AddComponentHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\DefaultLoadoutHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\FieldModifyHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\HardpointSetHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\LiveryNameHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\MountModHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\TransformHandler.cs" />
+    <Compile Include="CommandProcessing\Handlers\WeaponHandler.cs" />
+    <Compile Include="CommandProcessing\Core\CommandContext.cs" />
+    <Compile Include="CommandProcessing\Core\CommandDispatcher.cs" />
+    <Compile Include="CommandProcessing\Core\ICommandHandler.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="commands.qol" />
+    <EmbeddedResource Include="Resources\Backgrounds\Brawler1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Chicane1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Compass2b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Cricket1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Darkreach1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Ibis2b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Ifrit1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Kestrel1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Medusa2b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\NewGameLogo2c.png" />
+    <EmbeddedResource Include="Resources\Backgrounds\Revoker2b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Tarantula1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Ternion1b.jpg" />
+    <EmbeddedResource Include="Resources\Backgrounds\Vortex3b.jpg" />
+    <EmbeddedResource Include="Resources\botNames.txt" />
+    <EmbeddedResource Include="Resources\FBXMod\attackHelo1_turret.png" />
+    <EmbeddedResource Include="Resources\FBXMod\AttackHelo1NewWings.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\CompassNew.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\DarkreachNew.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\DarkreachNew2.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\Fighter1New.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\Fighter1Nose.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\Fighter1Nozzle.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\MGT.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\Missile_Launcher_F.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\Moon.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\mug_texture.png" />
+    <EmbeddedResource Include="Resources\FBXMod\RAM-29.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\SmallFighter1Nose.bundle" />
+    <EmbeddedResource Include="Resources\FBXMod\TurretLaserBarrel.bundle" />
+    <EmbeddedResource Include="Resources\hints2.csv" />
+    <EmbeddedResource Include="Resources\Horse\H1.bundle" />
+    <EmbeddedResource Include="Resources\P_Missiles1\P_GLB1.bundle" />
+    <EmbeddedResource Include="Resources\P_Missiles1\P_HAsM1.bundle" />
+    <EmbeddedResource Include="Resources\P_Missiles1\P_KEM1.bundle" />
+    <EmbeddedResource Include="Resources\P_Missiles1\p_missiles1_b.jpg" />
+    <EmbeddedResource Include="Resources\P_Missiles1\P_SAMRadar1.bundle" />
+    <EmbeddedResource Include="Resources\P_Missiles1\weaponIcon_P_GLB1.png" />
+    <EmbeddedResource Include="Resources\P_Missiles1\weaponIcon_P_HASM1.png" />
+    <EmbeddedResource Include="Resources\P_Missiles1\weaponIcon_P_KEM1.png" />
+    <EmbeddedResource Include="Resources\P_Missiles1\weaponIcon_P_LRSAM1.png" />
+    <EmbeddedResource Include="Resources\P_Pods1\CAS1_40mmRailcannon_barrel.bundle" />
+    <EmbeddedResource Include="Resources\P_Pods1\P_FlarePod1.bundle" />
+    <EmbeddedResource Include="Resources\P_Pods1\P_WeaponsPod1.bundle" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

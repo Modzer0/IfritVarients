@@ -1,0 +1,20 @@
+﻿// Decompiled with JetBrains decompiler
+// Type: NuclearOption.Jobs.SampleGroundResult
+// Assembly: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+// MVID: ED189D4A-56F4-4523-9409-1B9BC04B44A6
+// Assembly location: D:\SteamLibrary\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\Assembly-CSharp.dll
+
+using UnityEngine;
+
+#nullable disable
+namespace NuclearOption.Jobs;
+
+public struct SampleGroundResult
+{
+  public bool didHit;
+  public Vector3 hitNormal;
+  public Vector3 hitPoint;
+  public bool hasHitRB;
+  public bool onPaved;
+  public Vector3 hitPointVelocity;
+}

@@ -1,0 +1,1103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: D:\SteamLibrary\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\Assembly-CSharp.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{984A80A2-4BA5-44C3-8754-3CE17B8CA35D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <ApplicationVersion>0.0.0.0</ApplicationVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>lib\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SpeechLib">
+      <HintPath>lib\Interop.SpeechLib.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesFrowen.Graphy">
+      <HintPath>lib\JamesFrowen.Graphy.dll</HintPath>
+    </Reference>
+    <Reference Include="JamesFrowen.ScriptableVariables">
+      <HintPath>lib\JamesFrowen.ScriptableVariables.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirage">
+      <HintPath>lib\Mirage.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirage.SocketLayer">
+      <HintPath>lib\Mirage.SocketLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirage.Sockets.Udp">
+      <HintPath>lib\Mirage.Sockets.Udp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirage.SteamworksSocket">
+      <HintPath>lib\Mirage.SteamworksSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="ProfanityDetector">
+      <HintPath>lib\ProfanityDetector.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>lib\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RuntimeTransformHandle">
+      <HintPath>lib\RuntimeTransformHandle.dll</HintPath>
+    </Reference>
+    <Reference Include="StandaloneFileBrowser">
+      <HintPath>lib\StandaloneFileBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UniTask">
+      <HintPath>lib\UniTask.dll</HintPath>
+    </Reference>
+    <Reference Include="UniTask.Addressables">
+      <HintPath>lib\UniTask.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>lib\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>lib\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>lib\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>lib\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>lib\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>lib\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>lib\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>lib\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>lib\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>lib\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>lib\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>lib\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>lib\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>lib\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>lib\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>lib\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>lib\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>lib\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>lib\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>lib\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>lib\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>lib\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssaultCarrierAI.cs" />
+    <Compile Include="OpportunityThreat.cs" />
+    <Compile Include="ThreatInfo.cs" />
+    <Compile Include="ThreatVector.cs" />
+    <Compile Include="ThreatTracker.cs" />
+    <Compile Include="CombatAI.cs" />
+    <Compile Include="LandingCraftAI.cs" />
+    <Compile Include="ShipAI.cs" />
+    <Compile Include="AudioMixerVolume.cs" />
+    <Compile Include="AudioHelper.cs" />
+    <Compile Include="RandomSound.cs" />
+    <Compile Include="TurbineFireSound.cs" />
+    <Compile Include="CameraBaseState.cs" />
+    <Compile Include="CameraChaseState.cs" />
+    <Compile Include="CameraCockpitState.cs" />
+    <Compile Include="CameraControlledState.cs" />
+    <Compile Include="CameraControlUI.cs" />
+    <Compile Include="CameraEncyclopediaState.cs" />
+    <Compile Include="CameraFreeState.cs" />
+    <Compile Include="CameraOrbitState.cs" />
+    <Compile Include="CameraRelativeState.cs" />
+    <Compile Include="CameraSelectionState.cs" />
+    <Compile Include="CameraMode.cs" />
+    <Compile Include="AoAFeedback.cs" />
+    <Compile Include="ExposureController.cs" />
+    <Compile Include="CameraStateManager.cs" />
+    <Compile Include="CameraTVState.cs" />
+    <Compile Include="BenchmarkScope.cs" />
+    <Compile Include="BenchmarkBurst.cs" />
+    <Compile Include="JobPerf.cs" />
+    <Compile Include="ColorLog.cs" />
+    <Compile Include="ColorLog`1.cs" />
+    <Compile Include="LogTimeUpdater.cs" />
+    <Compile Include="DebugUI.cs" />
+    <Compile Include="ExplosionTester.cs" />
+    <Compile Include="FrameTimeLogger.cs" />
+    <Compile Include="PIDTuner.cs" />
+    <Compile Include="UnitDebug.cs" />
+    <Compile Include="CloudLayer.cs" />
+    <Compile Include="DamageParticles.cs" />
+    <Compile Include="DecalSpawner.cs" />
+    <Compile Include="DownwashEffect.cs" />
+    <Compile Include="EffectManager.cs" />
+    <Compile Include="ExplosionAudio.cs" />
+    <Compile Include="SonicBoomManager.cs" />
+    <Compile Include="ExplosionAudioManager.cs" />
+    <Compile Include="DebrisManager.cs" />
+    <Compile Include="FragmentManager.cs" />
+    <Compile Include="GLOC.cs" />
+    <Compile Include="LightAnimation.cs" />
+    <Compile Include="Lightning.cs" />
+    <Compile Include="Optional`1.cs" />
+    <Compile Include="MushroomCloud.cs" />
+    <Compile Include="NightVision.cs" />
+    <Compile Include="ParticleEffectManager.cs" />
+    <Compile Include="SetGlobalParticles.cs" />
+    <Compile Include="Explosion.cs" />
+    <Compile Include="Shockwave.cs" />
+    <Compile Include="TrailEmitter.cs" />
+    <Compile Include="VaporEmitter.cs" />
+    <Compile Include="VaporEffect.cs" />
+    <Compile Include="WaterEffect.cs" />
+    <Compile Include="WeatherSet.cs" />
+    <Compile Include="IHasJsonKey.cs" />
+    <Compile Include="Encyclopedia.cs" />
+    <Compile Include="EncyclopediaBrowser.cs" />
+    <Compile Include="AIHeloCombatState.cs" />
+    <Compile Include="AIHeloLandingState.cs" />
+    <Compile Include="AIHeloTakeoffState.cs" />
+    <Compile Include="AIHeloTransportState.cs" />
+    <Compile Include="AIPilotCombatModes.cs" />
+    <Compile Include="AIPilotLandingState.cs" />
+    <Compile Include="AIPilotShortLandingState.cs" />
+    <Compile Include="AIPilotTakeoffState.cs" />
+    <Compile Include="AIPilotTaxiState.cs" />
+    <Compile Include="Autopilot.cs" />
+    <Compile Include="AutopilotHelo.cs" />
+    <Compile Include="AoALimiter.cs" />
+    <Compile Include="TerrainWarningSystem.cs" />
+    <Compile Include="AutopilotPlane.cs" />
+    <Compile Include="AutopilotTiltwing.cs" />
+    <Compile Include="FriendlyAircraftProximity.cs" />
+    <Compile Include="PilotBaseState.cs" />
+    <Compile Include="PilotParkedState.cs" />
+    <Compile Include="PilotPlayerState.cs" />
+    <Compile Include="PersistentID.cs" />
+    <Compile Include="UnitRegistry.cs" />
+    <Compile Include="PersistentUnit.cs" />
+    <Compile Include="Obstacle.cs" />
+    <Compile Include="GridSquare.cs" />
+    <Compile Include="BattlefieldGrid.cs" />
+    <Compile Include="FactionRegistry.cs" />
+    <Compile Include="Faction.cs" />
+    <Compile Include="FactionHQ.cs" />
+    <Compile Include="Datum.cs" />
+    <Compile Include="BurstDatum.cs" />
+    <Compile Include="FloatingOrigin.cs" />
+    <Compile Include="GameAssets.cs" />
+    <Compile Include="PlayerSettings.cs" />
+    <Compile Include="DisconnectInfo.cs" />
+    <Compile Include="GameStateExtension.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="GameResolution.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GameplayUI.cs" />
+    <Compile Include="JoinMenu.cs" />
+    <Compile Include="Leaderboard.cs" />
+    <Compile Include="LeaderboardPlayerEntry.cs" />
+    <Compile Include="LevelInfo.cs" />
+    <Compile Include="MissionHelper.cs" />
+    <Compile Include="MissionManager.cs" />
+    <Compile Include="NewMissionConfig.cs" />
+    <Compile Include="MissionManagerDebugGui.cs" />
+    <Compile Include="MissionMessages.cs" />
+    <Compile Include="MissionPosition.cs" />
+    <Compile Include="MissionRunner.cs" />
+    <Compile Include="MissionStatsTracker.cs" />
+    <Compile Include="ResourcesAsyncLoader.cs" />
+    <Compile Include="ResourcesAsyncLoader`1.cs" />
+    <Compile Include="Spawner.cs" />
+    <Compile Include="TrackingInfo.cs" />
+    <Compile Include="UnityGraphicsBullshit.cs" />
+    <Compile Include="INetworkDefinition.cs" />
+    <Compile Include="DefinitionWriters.cs" />
+    <Compile Include="FactionFieldAttribute.cs" />
+    <Compile Include="SavedBuildingFieldAttribute.cs" />
+    <Compile Include="FastMath.cs" />
+    <Compile Include="MathExtensions.cs" />
+    <Compile Include="FixedTimer.cs" />
+    <Compile Include="GlobalPosition.cs" />
+    <Compile Include="GlobalPositionExtensions.cs" />
+    <Compile Include="LazySortedQueue`1.cs" />
+    <Compile Include="MaterialHelper.cs" />
+    <Compile Include="NativeArrayExtensions.cs" />
+    <Compile Include="ISceneSingleton.cs" />
+    <Compile Include="SceneSingleton`1.cs" />
+    <Compile Include="NetworkSceneSingleton`1.cs" />
+    <Compile Include="SlowUpdateExtensions.cs" />
+    <Compile Include="SphereGizmo.cs" />
+    <Compile Include="StringHelper.cs" />
+    <Compile Include="StringOptionsAttribute.cs" />
+    <Compile Include="UnitConverter.cs" />
+    <Compile Include="CursorFlags.cs" />
+    <Compile Include="CursorManager.cs" />
+    <Compile Include="ISyncedPart.cs" />
+    <Compile Include="AudioMenu.cs" />
+    <Compile Include="ChatSettings.cs" />
+    <Compile Include="ControlsMenu.cs" />
+    <Compile Include="CopyTextButton.cs" />
+    <Compile Include="CustomizeMissionMenu.cs" />
+    <Compile Include="GameplayMenu.cs" />
+    <Compile Include="GraphicsMenu.cs" />
+    <Compile Include="HintsTipsDisplay.cs" />
+    <Compile Include="HUDSettings.cs" />
+    <Compile Include="MainMenu.cs" />
+    <Compile Include="MissionSelectGroupButtons.cs" />
+    <Compile Include="MissionSelectList.cs" />
+    <Compile Include="MissionSelectListItem.cs" />
+    <Compile Include="MissionSelectPanel.cs" />
+    <Compile Include="MissionsPicker.cs" />
+    <Compile Include="MissionTagList.cs" />
+    <Compile Include="MissionTagListItem.cs" />
+    <Compile Include="QuitMissionButton.cs" />
+    <Compile Include="ReturnToMenuSceneButton.cs" />
+    <Compile Include="SettingsMenu.cs" />
+    <Compile Include="SettingsMenuButton.cs" />
+    <Compile Include="SinglePlayerMenu.cs" />
+    <Compile Include="TagFilterList.cs" />
+    <Compile Include="TagFilterListItem.cs" />
+    <Compile Include="RadialSlider.cs" />
+    <Compile Include="BandwidthText.cs" />
+    <Compile Include="MirageRemote.cs" />
+    <Compile Include="DialogueBox.cs" />
+    <Compile Include="HitValidator.cs" />
+    <Compile Include="MessageManager.cs" />
+    <Compile Include="KillType.cs" />
+    <Compile Include="KillTypeExtensions.cs" />
+    <Compile Include="NetworkFloatHelper.cs" />
+    <Compile Include="CompressedFloat.cs" />
+    <Compile Include="NetworkMission.cs" />
+    <Compile Include="Vector3Compressed.cs" />
+    <Compile Include="CompressedInputs.cs" />
+    <Compile Include="SteamManager.cs" />
+    <Compile Include="SteamDebugLog.cs" />
+    <Compile Include="WindowsTTS.cs" />
+    <Compile Include="Heap`1.cs" />
+    <Compile Include="IHeapItem`1.cs" />
+    <Compile Include="NodeGrid.cs" />
+    <Compile Include="Pathfinding.cs" />
+    <Compile Include="RoadPathfinder.cs" />
+    <Compile Include="PathfindingAgent.cs" />
+    <Compile Include="RoadPoint.cs" />
+    <Compile Include="SteeringInfo.cs" />
+    <Compile Include="AnimatedPhysicsSurface.cs" />
+    <Compile Include="ImpactType.cs" />
+    <Compile Include="NormalRandom.cs" />
+    <Compile Include="BulletSim.cs" />
+    <Compile Include="CollisionTriggerZone.cs" />
+    <Compile Include="ControlSurface.cs" />
+    <Compile Include="DamageEffects.cs" />
+    <Compile Include="DuctedFan.cs" />
+    <Compile Include="DuctedThrustSystem.cs" />
+    <Compile Include="HeloControlsFilter.cs" />
+    <Compile Include="RadarParams.cs" />
+    <Compile Include="IRadarReturn.cs" />
+    <Compile Include="JetNozzle.cs" />
+    <Compile Include="PIDFactors.cs" />
+    <Compile Include="PID3D.cs" />
+    <Compile Include="PID2D.cs" />
+    <Compile Include="PID.cs" />
+    <Compile Include="AeroPID.cs" />
+    <Compile Include="RotorShaft.cs" />
+    <Compile Include="SoftBodyRotor.cs" />
+    <Compile Include="SwashRotor.cs" />
+    <Compile Include="Parabola.cs" />
+    <Compile Include="Kinematics.cs" />
+    <Compile Include="ArtilleryCalc.cs" />
+    <Compile Include="AimSolver.cs" />
+    <Compile Include="TargetCalc.cs" />
+    <Compile Include="FactionHelper.cs" />
+    <Compile Include="MapSettings.cs" />
+    <Compile Include="MapSettingsManager.cs" />
+    <Compile Include="ScatterPoint.cs" />
+    <Compile Include="ScatterType.cs" />
+    <Compile Include="RenderBatch.cs" />
+    <Compile Include="TerrainScatter.cs" />
+    <Compile Include="ScatterSaveLoad.cs" />
+    <Compile Include="AirbaseOverlay.cs" />
+    <Compile Include="AircraftActionsReport.cs" />
+    <Compile Include="AircraftInventoryMenu.cs" />
+    <Compile Include="AircraftSelectionButton.cs" />
+    <Compile Include="AircraftCustomization.cs" />
+    <Compile Include="AircraftSelectionMenu.cs" />
+    <Compile Include="AllocationDisplay.cs" />
+    <Compile Include="ChatBox.cs" />
+    <Compile Include="HUDFunctions.cs" />
+    <Compile Include="CombatHUD.cs" />
+    <Compile Include="ContributeToFaction.cs" />
+    <Compile Include="ControlsFilterTuner.cs" />
+    <Compile Include="ConvoyPurchaseOption.cs" />
+    <Compile Include="DevelopmentVersionText.cs" />
+    <Compile Include="ExtraUiInput.cs" />
+    <Compile Include="FlexibleGridLayout.cs" />
+    <Compile Include="FlightHud.cs" />
+    <Compile Include="FlyByWireTuner.cs" />
+    <Compile Include="GoogleIconFont.cs" />
+    <Compile Include="HeadMountedDisplay.cs" />
+    <Compile Include="Altitude.cs" />
+    <Compile Include="AoABracket.cs" />
+    <Compile Include="AoADisplay.cs" />
+    <Compile Include="AoAIndexer.cs" />
+    <Compile Include="ArtificialHorizon.cs" />
+    <Compile Include="AutopilotIndicator.cs" />
+    <Compile Include="BasicFlightInstruments.cs" />
+    <Compile Include="Bearing.cs" />
+    <Compile Include="ChargeIndicator.cs" />
+    <Compile Include="Climbrate.cs" />
+    <Compile Include="CountermeasureIndicator.cs" />
+    <Compile Include="CustomAxis1Gauge.cs" />
+    <Compile Include="EngineTelemetry.cs" />
+    <Compile Include="FuelGauge.cs" />
+    <Compile Include="GameTime.cs" />
+    <Compile Include="GearIndicator.cs" />
+    <Compile Include="GIndicators.cs" />
+    <Compile Include="HoverIndicator.cs" />
+    <Compile Include="HUDApp.cs" />
+    <Compile Include="HUDAppManager.cs" />
+    <Compile Include="MachIndicator.cs" />
+    <Compile Include="MFDAppManager.cs" />
+    <Compile Include="INozzleGauge.cs" />
+    <Compile Include="NozzleGauge.cs" />
+    <Compile Include="otherTime.cs" />
+    <Compile Include="PropGauge.cs" />
+    <Compile Include="RadarWarning.cs" />
+    <Compile Include="RPMGauge.cs" />
+    <Compile Include="SpeedGauge.cs" />
+    <Compile Include="StatusGauges.cs" />
+    <Compile Include="SystemStatusDisplay.cs" />
+    <Compile Include="ThreatItem.cs" />
+    <Compile Include="ThreatList.cs" />
+    <Compile Include="ThrottleGauge.cs" />
+    <Compile Include="TurretAutoIndicator.cs" />
+    <Compile Include="VRSWarning.cs" />
+    <Compile Include="WeaponIndicator.cs" />
+    <Compile Include="WingAngleGauge.cs" />
+    <Compile Include="HUDUnitMarker.cs" />
+    <Compile Include="HUDBombingState.cs" />
+    <Compile Include="HUDBoresightState.cs" />
+    <Compile Include="HUDCargoState.cs" />
+    <Compile Include="HUDLaserGuidedState.cs" />
+    <Compile Include="HUDMissileState.cs" />
+    <Compile Include="HUDNoWeaponState.cs" />
+    <Compile Include="HUDSlingState.cs" />
+    <Compile Include="HUDTurretCrosshair.cs" />
+    <Compile Include="HUDTurretState.cs" />
+    <Compile Include="HUDWeaponState.cs" />
+    <Compile Include="KillDisplay.cs" />
+    <Compile Include="LandingScreenUI.cs" />
+    <Compile Include="LoadingScreen.cs" />
+    <Compile Include="AirbaseMapIcon.cs" />
+    <Compile Include="MapWaypoint.cs" />
+    <Compile Include="DynamicMap.cs" />
+    <Compile Include="FactionMode.cs" />
+    <Compile Include="GridLabels.cs" />
+    <Compile Include="JammedMarker.cs" />
+    <Compile Include="MapIcon.cs" />
+    <Compile Include="MapMarker.cs" />
+    <Compile Include="UnitMapMarker.cs" />
+    <Compile Include="MapToolTip.cs" />
+    <Compile Include="ObjectiveMarker.cs" />
+    <Compile Include="ObjectiveMarkerManager.cs" />
+    <Compile Include="TargetMarker.cs" />
+    <Compile Include="TooltipItem.cs" />
+    <Compile Include="UnitMapIcon.cs" />
+    <Compile Include="MessageUI.cs" />
+    <Compile Include="HUDOptions.cs" />
+    <Compile Include="HUDOptions_Item.cs" />
+    <Compile Include="HUDOptions_ToggleButton.cs" />
+    <Compile Include="InfoPanel_AirbaseEntry.cs" />
+    <Compile Include="InfoPanel_DEFCON.cs" />
+    <Compile Include="InfoPanel_Faction.cs" />
+    <Compile Include="InfoPanel_ItemPrefab.cs" />
+    <Compile Include="InfoPanel_PlayerEntry.cs" />
+    <Compile Include="MapOptions.cs" />
+    <Compile Include="MapOptions_ToggleButton.cs" />
+    <Compile Include="MFDScreen.cs" />
+    <Compile Include="ObjectiveInfoList.cs" />
+    <Compile Include="ObjectiveInfoList_Item.cs" />
+    <Compile Include="ObjectiveInfoList_ObjEntry.cs" />
+    <Compile Include="TargetListSelector.cs" />
+    <Compile Include="TargetListSelector_ToggleButton.cs" />
+    <Compile Include="TargetListSelector_UnitItem.cs" />
+    <Compile Include="TargetScreenUI.cs" />
+    <Compile Include="VirtualMFD.cs" />
+    <Compile Include="MusicManager.cs" />
+    <Compile Include="TextNoOverlap.cs" />
+    <Compile Include="ObjectiveOverlay.cs" />
+    <Compile Include="ObjectiveOverlayManager.cs" />
+    <Compile Include="RadialMenuAction.cs" />
+    <Compile Include="RadialMenuMain.cs" />
+    <Compile Include="ReserveReport.cs" />
+    <Compile Include="RestartMissionButton.cs" />
+    <Compile Include="RGBCycler.cs" />
+    <Compile Include="SoundManager.cs" />
+    <Compile Include="IReportDamage.cs" />
+    <Compile Include="OnReportDamage.cs" />
+    <Compile Include="PartStatusDisplay.cs" />
+    <Compile Include="StatusDisplay.cs" />
+    <Compile Include="TacScreen.cs" />
+    <Compile Include="TeamKillPanel.cs" />
+    <Compile Include="WeaponSelector.cs" />
+    <Compile Include="Airbrake.cs" />
+    <Compile Include="Aircraft.cs" />
+    <Compile Include="AircraftInfo.cs" />
+    <Compile Include="AircraftDefinition.cs" />
+    <Compile Include="Airfoil.cs" />
+    <Compile Include="StandardLoadout.cs" />
+    <Compile Include="AircraftParameters.cs" />
+    <Compile Include="Canopy.cs" />
+    <Compile Include="CargoRamp.cs" />
+    <Compile Include="Cockpit.cs" />
+    <Compile Include="CockpitWarningLights.cs" />
+    <Compile Include="CompoundHeloController.cs" />
+    <Compile Include="ConstantSpeedProp.cs" />
+    <Compile Include="ControlsFilter.cs" />
+    <Compile Include="ControlSurfacePhysics.cs" />
+    <Compile Include="Downwash.cs" />
+    <Compile Include="EjectionSeat.cs" />
+    <Compile Include="FuelTank.cs" />
+    <Compile Include="HighLiftDevice.cs" />
+    <Compile Include="GearPart.cs" />
+    <Compile Include="LandingGear.cs" />
+    <Compile Include="MissileWarning.cs" />
+    <Compile Include="MountedRadar.cs" />
+    <Compile Include="NavLights.cs" />
+    <Compile Include="PowerSupply.cs" />
+    <Compile Include="PropFan.cs" />
+    <Compile Include="PropStrikeDetector.cs" />
+    <Compile Include="RelaxedStabilityController.cs" />
+    <Compile Include="SwivelDuctSystem.cs" />
+    <Compile Include="TailHook.cs" />
+    <Compile Include="TargetCam.cs" />
+    <Compile Include="TiltWingController.cs" />
+    <Compile Include="Transmission.cs" />
+    <Compile Include="WeaponManager.cs" />
+    <Compile Include="HardpointSet.cs" />
+    <Compile Include="Hardpoint.cs" />
+    <Compile Include="WeaponStation.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="BuildingDefinition.cs" />
+    <Compile Include="BuildingLights.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="MapBuilding.cs" />
+    <Compile Include="MapBuildingSet.cs" />
+    <Compile Include="Scenery.cs" />
+    <Compile Include="SceneryDefinition.cs" />
+    <Compile Include="VehicleDepot.cs" />
+    <Compile Include="WarheadStorage.cs" />
+    <Compile Include="ForceAndTorque.cs" />
+    <Compile Include="AeroPart.cs" />
+    <Compile Include="Airbase.cs" />
+    <Compile Include="AirCushion.cs" />
+    <Compile Include="ArrestorGear.cs" />
+    <Compile Include="ICapturable.cs" />
+    <Compile Include="Capture.cs" />
+    <Compile Include="CargoDeploymentSystem.cs" />
+    <Compile Include="ColorableMount.cs" />
+    <Compile Include="FireControl.cs" />
+    <Compile Include="HangarDoor.cs" />
+    <Compile Include="Hangar.cs" />
+    <Compile Include="DamageEffect.cs" />
+    <Compile Include="PartDamageTracker.cs" />
+    <Compile Include="DamageMaterial.cs" />
+    <Compile Include="GForceDamage.cs" />
+    <Compile Include="ImpactDamage.cs" />
+    <Compile Include="ArmorProperties.cs" />
+    <Compile Include="DamageInfo.cs" />
+    <Compile Include="DamageablePart.cs" />
+    <Compile Include="IDamageable.cs" />
+    <Compile Include="IEngine.cs" />
+    <Compile Include="IPowerSource.cs" />
+    <Compile Include="IPitchTelemetry.cs" />
+    <Compile Include="IThrustSource.cs" />
+    <Compile Include="IPowerOutput.cs" />
+    <Compile Include="LaserDesignator.cs" />
+    <Compile Include="MoveablePartAnimation.cs" />
+    <Compile Include="OpticalLandingSystem.cs" />
+    <Compile Include="Parachute.cs" />
+    <Compile Include="Radar.cs" />
+    <Compile Include="RadarLocator.cs" />
+    <Compile Include="IRearmable.cs" />
+    <Compile Include="RearmEventArgs.cs" />
+    <Compile Include="AmmoValue.cs" />
+    <Compile Include="Rearmer.cs" />
+    <Compile Include="IRefuelable.cs" />
+    <Compile Include="Refueler.cs" />
+    <Compile Include="IRepairable.cs" />
+    <Compile Include="Repairer.cs" />
+    <Compile Include="RunwayQuery.cs" />
+    <Compile Include="RunwayType.cs" />
+    <Compile Include="RunwayQueryType.cs" />
+    <Compile Include="RunwayTypeExtensions.cs" />
+    <Compile Include="ShipPart.cs" />
+    <Compile Include="ShipPropulsion.cs" />
+    <Compile Include="TargetDetector.cs" />
+    <Compile Include="TerrainColorPicker.cs" />
+    <Compile Include="TimedDeletion.cs" />
+    <Compile Include="TurbineEngine.cs" />
+    <Compile Include="Turbojet.cs" />
+    <Compile Include="FiringCone.cs" />
+    <Compile Include="FiringConeChecker.cs" />
+    <Compile Include="Turret.cs" />
+    <Compile Include="ICommandable.cs" />
+    <Compile Include="UnitCommand.cs" />
+    <Compile Include="PartJoint.cs" />
+    <Compile Include="UnitPart.cs" />
+    <Compile Include="UnitStorage.cs" />
+    <Compile Include="WeaponStatus.cs" />
+    <Compile Include="Wreckage.cs" />
+    <Compile Include="LayerHelper.cs" />
+    <Compile Include="LiveryBehaviour.cs" />
+    <Compile Include="LiveryData.cs" />
+    <Compile Include="AssetReferenceLiveryData.cs" />
+    <Compile Include="LiveryMetaData.cs" />
+    <Compile Include="LiveryKey.cs" />
+    <Compile Include="MaterialCleanup.cs" />
+    <Compile Include="Observer.cs" />
+    <Compile Include="ControlInputs.cs" />
+    <Compile Include="Pilot.cs" />
+    <Compile Include="PilotDismounted.cs" />
+    <Compile Include="ShipInputs.cs" />
+    <Compile Include="Ship.cs" />
+    <Compile Include="ShipInfo.cs" />
+    <Compile Include="ShipDefinition.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="TypeIdentity.cs" />
+    <Compile Include="RoleIdentity.cs" />
+    <Compile Include="UnitDefinition.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="VehicleFormation.cs" />
+    <Compile Include="GroundVehicle.cs" />
+    <Compile Include="VehicleDefinition.cs" />
+    <Compile Include="BayDoor.cs" />
+    <Compile Include="CountermeasureManager.cs" />
+    <Compile Include="Countermeasure.cs" />
+    <Compile Include="FlareEjector.cs" />
+    <Compile Include="Gun.cs" />
+    <Compile Include="ImpactDetector.cs" />
+    <Compile Include="IRSource.cs" />
+    <Compile Include="IRFlare.cs" />
+    <Compile Include="JammingPod.cs" />
+    <Compile Include="Laser.cs" />
+    <Compile Include="ARHSeeker.cs" />
+    <Compile Include="ARMSeeker.cs" />
+    <Compile Include="BallisticMissileGuidance.cs" />
+    <Compile Include="IRSeeker.cs" />
+    <Compile Include="LaserSeeker.cs" />
+    <Compile Include="JinkEvasion.cs" />
+    <Compile Include="TopAttack.cs" />
+    <Compile Include="TerminalBoost.cs" />
+    <Compile Include="MissileSeeker.cs" />
+    <Compile Include="OpticalSeeker.cs" />
+    <Compile Include="OpticalSeekerBomb.cs" />
+    <Compile Include="OpticalSeekerCruiseMissile.cs" />
+    <Compile Include="OpticalSeekerShell.cs" />
+    <Compile Include="SARHSeeker.cs" />
+    <Compile Include="Missile.cs" />
+    <Compile Include="MissileInfo.cs" />
+    <Compile Include="MissileDefinition.cs" />
+    <Compile Include="MissileLauncher.cs" />
+    <Compile Include="MountedCargo.cs" />
+    <Compile Include="MountedMissile.cs" />
+    <Compile Include="MountedTroops.cs" />
+    <Compile Include="OpticalSeekerHighDrag.cs" />
+    <Compile Include="RadarJammer.cs" />
+    <Compile Include="SlingloadHook.cs" />
+    <Compile Include="SpecialFlare.cs" />
+    <Compile Include="SpecialFlareEjector.cs" />
+    <Compile Include="SmokeEmitter.cs" />
+    <Compile Include="SpecialSmokeEjector.cs" />
+    <Compile Include="VLSBooster.cs" />
+    <Compile Include="Weapon.cs" />
+    <Compile Include="WeaponChecker.cs" />
+    <Compile Include="TargetRequirements.cs" />
+    <Compile Include="WeaponInfo.cs" />
+    <Compile Include="WeaponMount.cs" />
+    <Compile Include="WreckCollector.cs" />
+    <Compile Include="WeaponMask.cs" />
+    <Compile Include="UnitySourceGeneratedAssemblyMonoScriptTypes_v1.cs" />
+    <Compile Include="Mirage\GeneratedNetworkCode.cs" />
+    <Compile Include="JamesFrowen\ScriptableVariables\ConsoleParser.cs" />
+    <Compile Include="JamesFrowen\ScriptableVariables\UI\ButtonController.cs" />
+    <Compile Include="JamesFrowen\ScriptableVariables\UI\ListItem`1.cs" />
+    <Compile Include="JamesFrowen\ScriptableVariables\UI\ListController`1.cs" />
+    <Compile Include="RoadPathfinding\Node.cs" />
+    <Compile Include="RoadPathfinding\Road.cs" />
+    <Compile Include="RoadPathfinding\RoadNetwork.cs" />
+    <Compile Include="AStar\Node.cs" />
+    <Compile Include="NuclearOption\ReserveEvent.cs" />
+    <Compile Include="NuclearOption\ReserveNotice.cs" />
+    <Compile Include="NuclearOption\OwnedAirframe.cs" />
+    <Compile Include="NuclearOption\ExclusionZone.cs" />
+    <Compile Include="NuclearOption\AddressablePaths.cs" />
+    <Compile Include="NuclearOption\Workshop\ItemDetailsWorkshopPanel.cs" />
+    <Compile Include="NuclearOption\Workshop\ListWorkshopPanel.cs" />
+    <Compile Include="NuclearOption\Workshop\ListWorkshopPanelControls.cs" />
+    <Compile Include="NuclearOption\Workshop\LoadingImage.cs" />
+    <Compile Include="NuclearOption\Workshop\SteamErrorPopup.cs" />
+    <Compile Include="NuclearOption\Workshop\SteamWorkshop.cs" />
+    <Compile Include="NuclearOption\Workshop\OrderBy.cs" />
+    <Compile Include="NuclearOption\Workshop\SubscribedItem.cs" />
+    <Compile Include="NuclearOption\Workshop\SubscribedItemType.cs" />
+    <Compile Include="NuclearOption\Workshop\WorkshopJson.cs" />
+    <Compile Include="NuclearOption\Workshop\MissionPreviewHelper.cs" />
+    <Compile Include="NuclearOption\Workshop\SteamWorkshopItem.cs" />
+    <Compile Include="NuclearOption\Workshop\TabController.cs" />
+    <Compile Include="NuclearOption\Workshop\UploadWorkshopPanel.cs" />
+    <Compile Include="NuclearOption\Workshop\WorkshopList.cs" />
+    <Compile Include="NuclearOption\Workshop\WorkshopListItem.cs" />
+    <Compile Include="NuclearOption\Workshop\WorkshopMenu.cs" />
+    <Compile Include="NuclearOption\UI\BaseToggle.cs" />
+    <Compile Include="NuclearOption\UI\BetterBorder.cs" />
+    <Compile Include="NuclearOption\UI\BetterToggleGroup.cs" />
+    <Compile Include="NuclearOption\UI\BoxToggle.cs" />
+    <Compile Include="NuclearOption\UI\OverrideField.cs" />
+    <Compile Include="NuclearOption\UI\SliderText.cs" />
+    <Compile Include="NuclearOption\UI\SliderToggle.cs" />
+    <Compile Include="NuclearOption\UI\ToggleChangeTextColor.cs" />
+    <Compile Include="NuclearOption\UI\UsePreferredSize.cs" />
+    <Compile Include="NuclearOption\SceneLoading\MapDetails.cs" />
+    <Compile Include="NuclearOption\SceneLoading\LoadMapMessage.cs" />
+    <Compile Include="NuclearOption\SceneLoading\MapKey.cs" />
+    <Compile Include="NuclearOption\SceneLoading\MapLoader.cs" />
+    <Compile Include="NuclearOption\SceneLoading\ObjectType.cs" />
+    <Compile Include="NuclearOption\SceneLoading\NetworkMap.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\AircraftNetworkTransform.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\ClientAuthStream.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\ClientAuthChecks.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\GroundVehicleNetworkTransform.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\MissileNetworkTransform.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\NetworkPIDSmoother.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\NetworkTransformBase.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\PilotDismountedNetworkTransform.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SendTransformBatcher.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\VisualUpdateTime.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SmoothNetworkTime.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SendTransformBatcherDebugger.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SendTransformBatcherExtrapolationTimeSource.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SendTransformBatcherInterpolationDeltaTimeSource.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\ShipNetworkTransform.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\ISnapshotBuffer.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\SnapshotBuffer`1.cs" />
+    <Compile Include="NuclearOption\NetworkTransforms\UnitNetworkTransform.cs" />
+    <Compile Include="NuclearOption\CodeGenHelper\FloatException.cs" />
+    <Compile Include="NuclearOption\CodeGenHelper\CodeGenHelperMethods.cs" />
+    <Compile Include="NuclearOption\Networking\NetworkManagerNuclearOption.cs" />
+    <Compile Include="NuclearOption\Networking\SocketType.cs" />
+    <Compile Include="NuclearOption\Networking\HostOptions.cs" />
+    <Compile Include="NuclearOption\Networking\ConnectOptions.cs" />
+    <Compile Include="NuclearOption\Networking\HostEndedMessage.cs" />
+    <Compile Include="NuclearOption\Networking\NetworkPause.cs" />
+    <Compile Include="NuclearOption\Networking\PlayerHelper.cs" />
+    <Compile Include="NuclearOption\Networking\PlayerType.cs" />
+    <Compile Include="NuclearOption\Networking\BasePlayer.cs" />
+    <Compile Include="NuclearOption\Networking\DedicatedServerPlayer.cs" />
+    <Compile Include="NuclearOption\Networking\SavedPlayerData.cs" />
+    <Compile Include="NuclearOption\Networking\Player.cs" />
+    <Compile Include="NuclearOption\Networking\PlayerRef.cs" />
+    <Compile Include="NuclearOption\Networking\SpectatorPlayer.cs" />
+    <Compile Include="NuclearOption\Networking\LoadWaitingSceneMessage.cs" />
+    <Compile Include="NuclearOption\Networking\ServerLoadingProgressMessage.cs" />
+    <Compile Include="NuclearOption\Networking\WaitingForDedicatedServerMenu.cs" />
+    <Compile Include="NuclearOption\Networking\Authentication\NetworkAuthenticatorNuclearOption.cs" />
+    <Compile Include="NuclearOption\Networking\Authentication\TimeoutConfig.cs" />
+    <Compile Include="NuclearOption\Networking\Authentication\PlayerTimeout.cs" />
+    <Compile Include="NuclearOption\Networking\Authentication\TimeoutManager.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\CreateLobbyModal.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\FlashErrorMessageModal.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\FlashErrorMessageSingleton.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\FuzzySearch.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\JoinProgress.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\JoinLobbyOverlay.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyDetailsModal.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyInstance.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\PlayerLobbyInstance.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\ServerLobbyInstance.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\HostedLobbyInstance.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\DedicatedServerKeyValues.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\ListSortButton.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyList.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyListFadeOverlay.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyListItem.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyPassword.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbyPasswordPromptSingleton.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\LobbySearchFilter.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\FilterServerType.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\MissionPvpType.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\ModalBackground.cs" />
+    <Compile Include="NuclearOption\Networking\Lobbies\SteamLobby.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\AllowBanList.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\DedicatedServerConfig.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\MissionOptions.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\MissionKeySaveable.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\RotationType.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\DedicatedServerManager.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\MissionRotation.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\DefaultServerCommands.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\BanServerCommands.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\ServerRemoteCommands.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\CommandMessage.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\StatusCode.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\CommandResponse.cs" />
+    <Compile Include="NuclearOption\DedicatedServer\Commands\ServerCommand.cs" />
+    <Compile Include="NuclearOption\Chat\BlockList.cs" />
+    <Compile Include="NuclearOption\Chat\ChatManager.cs" />
+    <Compile Include="NuclearOption\Chat\RateLimiter.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\IMetaData.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModFolders.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModLoadCache.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModLoader.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModLoader`2.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModFoldersImpl\Skins.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModFoldersImpl\AppDataSkins.cs" />
+    <Compile Include="NuclearOption\AddressableScripts\ModFoldersImpl\WorkshopSkins.cs" />
+    <Compile Include="NuclearOption\ModScripts\CopyToModProjectAttribute.cs" />
+    <Compile Include="NuclearOption\ModScripts\ModTypes.cs" />
+    <Compile Include="NuclearOption\ModScripts\WorkshopUploadItem.cs" />
+    <Compile Include="NuclearOption\ModScripts\IWorkshopCreateCallbacks.cs" />
+    <Compile Include="NuclearOption\ModScripts\ModType.cs" />
+    <Compile Include="NuclearOption\ModScripts\Impl\AircraftLiveryMod.cs" />
+    <Compile Include="NuclearOption\ModScripts\Impl\MissionMod.cs" />
+    <Compile Include="NuclearOption\SavedMission\Restrictions.cs" />
+    <Compile Include="NuclearOption\SavedMission\FactionSupply.cs" />
+    <Compile Include="NuclearOption\SavedMission\Loadout.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedLoadout.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionQuickLoad.cs" />
+    <Compile Include="NuclearOption\SavedMission\Mission.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionEnvironment.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionFaction.cs" />
+    <Compile Include="NuclearOption\SavedMission\QuickLoadMissionFaction.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionGroup.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionKey.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionSaveLoad.cs" />
+    <Compile Include="NuclearOption\SavedMission\PositionRotation.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionSettings.cs" />
+    <Compile Include="NuclearOption\SavedMission\PlayerMode.cs" />
+    <Compile Include="NuclearOption\SavedMission\MissionTag.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedRunway.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedAirbase.cs" />
+    <Compile Include="NuclearOption\SavedMission\LoadoutOld.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedAircraft.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedBuilding.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedContainer.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedMissile.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedPilot.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedScenery.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedShip.cs" />
+    <Compile Include="NuclearOption\SavedMission\PlacementType.cs" />
+    <Compile Include="NuclearOption\SavedMission\IHasPlacementType.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedUnit.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedUnitInventory.cs" />
+    <Compile Include="NuclearOption\SavedMission\SavedVehicle.cs" />
+    <Compile Include="NuclearOption\SavedMission\VehicleWaypoint.cs" />
+    <Compile Include="NuclearOption\SavedMission\StoredUnitCount.cs" />
+    <Compile Include="NuclearOption\SavedMission\UnitInventory.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\IHasFaction.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\MissionObjectives.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\LoadErrors.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\MissionLoadException.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\MissionLookups.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\MissionObjectivesFactory.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\IObjectiveWithPosition.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\IObjectiveEditorUpdate.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ObjectivePosition.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ObjectiveStatus.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ObjectiveData.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Override`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\OverrideExtensions.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\IValueWrapper.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\IValueWrapper`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapper.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperExtension.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapper`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperGlobalPosition.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperQuaternion.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperInt.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperFloat.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperBool.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperString.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ValueWrapperOverride`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ReadWriteObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\SavedMissionObjectives.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\SavedObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ObjectiveType.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\CompleteOrder.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\SavedOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\OutcomeType.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\SaveHelper.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ISaveableReference.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\ISaveableData.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ChangeType.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ChangeTypeHelper.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\CompleteObjectiveOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\EndGameOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\EndType.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\GiveScoreOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ModifyAirbaseOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ModifyEnvironmentOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ModifyFactionOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\RemoveUnitOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\RestrictionOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\ShowMessageOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\SpawnUnitOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Outcomes\StartObjectiveOutcome.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CaptureAirbaseObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CompleteOrderObjectiveWithPositions`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CompleteOrderObjective`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CheckCallback`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\IObjectiveList`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CompleteAllList`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CompleteOrderList`1.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CompleteOtherObjectiveObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\CrashAircraftObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\DestroyUnitObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\DialogueBoxObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\NoObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\PositionHandle.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\ReachUnitsObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\ReachWaypointsObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\WaypointEditor.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\Waypoint.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\SpotUnitObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\SuccessfulSortieObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\WaitTimeObjective.cs" />
+    <Compile Include="NuclearOption\SavedMission\ObjectiveV2\Objectives\WaypointObjectiveHandle.cs" />
+    <Compile Include="NuclearOption\SavedMission\ConvertVersions\ConvertOldMissions.cs" />
+    <Compile Include="NuclearOption\SavedMission\ConvertVersions\MissionVersionUpgrade.cs" />
+    <Compile Include="NuclearOption\SavedMission\ConvertVersions\V2LoadoutMap.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\AirbaseEditorFlag.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditorSelectableProxy.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\AirbaseEditorRadius.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\AirbasePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\AircraftOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\BuildingOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DynamicMapEditorSelect.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditorCameraNavigator.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditorCursor.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\GroupRotationMode.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditorHandle.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditorTabs.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\BoolDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DrawInnerData`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DataDrawerHelper.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\FilterSet.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DataDrawer.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\IDataField`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\DropdownDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditObjectivePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EditOutcomePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EmptyDataList.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EmptyDataItemWrapper.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EmptyDataListItem.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EnumNames.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EnumNames`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\FactionDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ILayerRebuildRoot.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\FixLayout.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\FloatDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ListControllerWithButtonsBase`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MoveAction.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ItemWithButtonsWrapper.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ListItemWithButtons.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\NewObjectivePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\NewOutcomePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\NewPanelBase`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ObjectiveEditorV2.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\SidePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ISidePanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\OverrideDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ReferenceDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ReferenceList.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\GetAllOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ReferenceToString.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\PickOrCancel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ReferencePopup.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\StringDataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UIPrefabs.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Vector3DataField.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\EnvironmentTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\FactionSettingsTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\InputFieldChecker.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\InputFieldExtensions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\InventoryInspector.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\InventoryInspectorItem.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\InventoryItem.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissileOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionEditor.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionEditorInput.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionLoadErrorItem.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionLoadErrorPanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionSettingsTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\IMissionTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionSettingTabManager.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\OpenUnitTabOnSelect.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\PanelScrollView.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionEditorLoadMenu.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionEditorNewMenu.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MissionEditorPopupMenus.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\NewMissionMapButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RebuildLayoutFromAwake.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RestrictedItem.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RestrictionsTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RoadEditor.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RoadNodeInspector.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RoadNodeMarker.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\RunwayTab.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\SceneryOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\SelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\SingleSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MultiSelectSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UnitSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\WaypointSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\PositionSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\AirbaseSelectionDetails.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\ShipOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UndoRedo.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UnitCopyPaste.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UnitPanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UnitPanelOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\IEditorSelectable.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\IPlacingMenu.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\UnitSelection.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\VehicleOptions.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\WaypointEntry.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\WaypointList.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MultiSelect\MultiSelectHelper.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MultiSelect\MultiField`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\MultiSelect\MultiSelect`1.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\ClosePanelButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\EditorPlayMissionButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\ExitEditorButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\HighlightButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\HoverText.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\LoadMissionButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\MapButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\NewMissionButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\OpenMenuTabButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\SaveMissionButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\ShowHoverText.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\ShowTextOnUnitHover.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\SpawnPrefabTabButton.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\NewUnitPanel.cs" />
+    <Compile Include="NuclearOption\MissionEditorScripts\Buttons\UnitPreviewGenerator.cs" />
+    <Compile Include="NuclearOption\Jobs\DetectorManager.cs" />
+    <Compile Include="NuclearOption\Jobs\DetectionRequest.cs" />
+    <Compile Include="NuclearOption\Jobs\AeroJobSettings.cs" />
+    <Compile Include="NuclearOption\Jobs\AeroPartFields.cs" />
+    <Compile Include="NuclearOption\Jobs\JobForceType.cs" />
+    <Compile Include="NuclearOption\Jobs\AeroJob_Math.cs" />
+    <Compile Include="NuclearOption\Jobs\ChartHelper.cs" />
+    <Compile Include="NuclearOption\Jobs\ControlJobSettings.cs" />
+    <Compile Include="NuclearOption\Jobs\ControlSurfaceFields.cs" />
+    <Compile Include="NuclearOption\Jobs\ControlInputsBurst.cs" />
+    <Compile Include="NuclearOption\Jobs\ControlSurfaceJob_Math.cs" />
+    <Compile Include="NuclearOption\Jobs\GroundVehicleJobSettings.cs" />
+    <Compile Include="NuclearOption\Jobs\GroundVehicleFields.cs" />
+    <Compile Include="NuclearOption\Jobs\SampleGroundResult.cs" />
+    <Compile Include="NuclearOption\Jobs\ObstaclePosition.cs" />
+    <Compile Include="NuclearOption\Jobs\GroundVehicleJob_Math1.cs" />
+    <Compile Include="NuclearOption\Jobs\GroundVehicleJob_Math2.cs" />
+    <Compile Include="NuclearOption\Jobs\JobManager.cs" />
+    <Compile Include="NuclearOption\Jobs\JobPerfTimersExtensions.cs" />
+    <Compile Include="NuclearOption\Jobs\JobSharedFields.cs" />
+    <Compile Include="NuclearOption\Jobs\DebugVisJobMarker.cs" />
+    <Compile Include="NuclearOption\Jobs\DebugVisJobMarkerType.cs" />
+    <Compile Include="NuclearOption\Jobs\PartResult.cs" />
+    <Compile Include="NuclearOption\Jobs\NullableIndex.cs" />
+    <Compile Include="NuclearOption\Jobs\JobUnitList`1.cs" />
+    <Compile Include="NuclearOption\Jobs\IHasIndexInJob.cs" />
+    <Compile Include="NuclearOption\Jobs\JobPart`2.cs" />
+    <Compile Include="NuclearOption\Jobs\IndexLink.cs" />
+    <Compile Include="NuclearOption\Jobs\UnsafeJobExtensions.cs" />
+    <Compile Include="NuclearOption\Jobs\JobTransformValues.cs" />
+    <Compile Include="NuclearOption\Jobs\Ptr`1.cs" />
+    <Compile Include="NuclearOption\Jobs\PtrAllocation`1.cs" />
+    <Compile Include="NuclearOption\Jobs\PtrRefCounter`1.cs" />
+    <Compile Include="NuclearOption\Jobs\PtrNullException`1.cs" />
+    <Compile Include="NuclearOption\Jobs\JobsAllocatorShared.cs" />
+    <Compile Include="NuclearOption\Jobs\JobsAllocator.cs" />
+    <Compile Include="NuclearOption\Jobs\JobsAllocator`1.cs" />
+    <Compile Include="NuclearOption\Jobs\PtrArray`1.cs" />
+    <Compile Include="NuclearOption\Jobs\PtrList`1.cs" />
+    <Compile Include="NuclearOption\Jobs\ReadTransformJob.cs" />
+    <Compile Include="NuclearOption\Jobs\SetLocalRotationJob.cs" />
+    <Compile Include="NuclearOption\Jobs\WaterJobsSettings.cs" />
+    <Compile Include="NuclearOption\Jobs\ShipPartFields.cs" />
+    <Compile Include="NuclearOption\Jobs\WaterJob_Math.cs" />
+    <Compile Include="NuclearOption\DebugScripts\DebugControlInputsDisplay.cs" />
+    <Compile Include="NuclearOption\DebugScripts\DebugControlInputsDisplayRow.cs" />
+    <Compile Include="NuclearOption\DebugScripts\DebugText.cs" />
+    <Compile Include="NuclearOption\DebugScripts\DebugVis.cs" />
+    <Compile Include="NuclearOption\BuildScripts\CommandParser.cs" />
+    <Compile Include="NuclearOption\BuildScripts\CommandLineArgParser.cs" />
+    <Compile Include="NuclearOption\BuildScripts\DebugTests\DescriptionTests.cs" />
+    <Compile Include="NuclearOption\BuildScripts\DebugTests\LeakTest.cs" />
+    <Compile Include="NuclearOption\BuildScripts\DebugTests\LobbyPasswordTest.cs" />
+    <Compile Include="NuclearOption\BuildScripts\DebugTests\SceneLoadTest.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
