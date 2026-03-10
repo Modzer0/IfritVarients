@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace KR67R
 {
-    [BepInPlugin("com.nuclearoption.kr67r", "KR-67R Recon Variant", "1.0.0")]
+    [BepInPlugin("com.nuclearoption.kr67r", "KR-67R Recon Variant", "0.1.0")]
     public class Plugin : BaseUnityPlugin
     {
         // ── Configuration ──

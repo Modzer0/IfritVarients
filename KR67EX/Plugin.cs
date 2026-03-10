@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace KR67EX
 {
-    [BepInPlugin("com.nuclearoption.kr67ex", "KR-67EX Variant", "1.0.0")]
+    [BepInPlugin("com.nuclearoption.kr67ex", "KR-67EX Variant", "0.1.0")]
     public class Plugin : BaseUnityPlugin
     {
         // ── Configuration ──
