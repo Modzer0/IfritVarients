@@ -31,8 +31,9 @@ namespace KR67EX
         internal const string CloneDisplayName = "KR-67EX";
         internal const string CloneCode = "KR-67EX";
         internal const string CloneDescription =
-            "Enhanced multirole variant with upgraded engines, extended radar range, " +
-            "increased G tolerance, and expanded weapons capability.";
+            "With the success of the KR-67 airframe an upgrade program was put in place giving it " +
+            "more powerful engines, radar, and mounts for more missiles along with higher G tolerances " +
+            "for the airframe.";
 
         // Mach 2.5 at sea level ≈ 340 * 2.5 = 850 m/s
         internal const float Mach25SeaLevel = 850f;
