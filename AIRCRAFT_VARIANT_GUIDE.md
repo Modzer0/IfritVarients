@@ -462,3 +462,35 @@ These are the minimum patches needed for a fully functional aircraft variant:
 Patches 1-2 cover Encyclopedia + Editor. Patches 3-7 cover in-game spawning.
 
 Factory production and supply work automatically once the clone is in Encyclopedia.
+
+
+---
+
+## Gotchas and Common Issues
+
+### Shared Prefab Implications
+- The clone and original share `unitPrefab`. Any modification to the prefab affects BOTH.
+- Runtime differentiation must happen via Harmony patches checking `aircraft.definition`.
+- `CacheMass()` reads from the shared prefab, so mass is identical unless you patch it.
+
+### Static Cache Survival
+- `NewUnitPanel.unitProviders` is static — survives scene reloads. Always clear it.
+- `Encyclopedia.Lookup` and `WeaponLookup` are static dictionaries — rebuilt each `AfterLoad`.
+
+### Network Sync
+- `INetworkDefinition.LookupIndex` must be set for multiplayer. PREFIX on `AfterLoad` handles this.
+- All players must have the same mod installed or the `LookupIndex` will mismatch.
+- `jsonKey` is used for mission save/load serialization.
+
+### Save/Load Compatibility
+- Missions save aircraft by `jsonKey`. If you change the key, old missions break.
+- If the mod is removed, missions referencing the clone's `jsonKey` will fail to load those units (they'll be skipped with an error log).
+
+### Factory Production Type
+- `Factory.SetFactory` resolves `productionType` via `Encyclopedia.Lookup`. The stored string is the `jsonKey`.
+- The editor's `BuildingOptions.ProductionUnitDropdownChanged` stores `unitPrefab.name` (not `jsonKey`) as the production type for aircraft/vehicles. However, `Factory.SetFactory` uses `Encyclopedia.Lookup` which is keyed by `jsonKey`. For stock aircraft, `jsonKey` typically matches `unitPrefab.name`. For clones sharing a prefab, this can cause issues — the lookup may resolve to the original instead of the clone. **Workaround**: Ensure your clone's `jsonKey` is distinct and test factory production in the editor.
+
+### Definition Reassignment Timing
+- `Spawner.SpawnAircraft` instantiates the prefab and reads `definition` from the `Aircraft` component on the prefab. This always returns the original's definition.
+- Your postfix on `SpawnAircraft` must reassign `definition` before any other code reads it.
+- The `unitName` is set from `component.definition.unitName` in `SpawnAircraft` — you may need to override this too.
