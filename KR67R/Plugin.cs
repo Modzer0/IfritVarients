@@ -51,8 +51,9 @@ namespace KR67R
         internal const float Mach5At80kFt = 1450f;
 
         // Disabled hardpoint set indices (0-indexed):
-        // 1 = Forward Bay (optical sensor), 4 = Inner Pylon, 5 = Outer Pylon
-        internal static readonly int[] DisabledHardpoints = { 1, 4, 5 };
+        // 0 = Internal Cannon (removed), 1 = Forward Bay (optical sensor),
+        // 4 = Inner Pylon, 5 = Outer Pylon
+        internal static readonly int[] DisabledHardpoints = { 0, 1, 4, 5 };
 
         private void Awake()
         {
