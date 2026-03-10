@@ -129,9 +129,16 @@ namespace IfritVariants
             R_TargetSpeedAltFt = Config.Bind("KR-67R", "TargetSpeedAltFt", 80000f,
                 "Altitude in feet where target Mach speed is achieved");
 
-            Harmony harmony = new Harmony(PluginGUID);
-            harmony.PatchAll();
-            Logger.LogInfo($"{PluginName} v{PluginVersion} loaded.");
+            try
+            {
+                Harmony harmony = new Harmony(PluginGUID);
+                harmony.PatchAll();
+                Logger.LogInfo($"{PluginName} v{PluginVersion} loaded. All patches applied.");
+            }
+            catch (System.Exception ex)
+            {
+                Logger.LogError($"{PluginName} failed to apply patches: {ex}");
+            }
         }
     }
 }

@@ -18,6 +18,16 @@ namespace IfritVariants.Patches
                 return;
             }
 
+            // ── Add AAM-29/AAM-36 quad mounts to KR-67A prefab pylons ──
+            try
+            {
+                AddWeaponsToPrefab(original);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning($"[IfritVariants] Failed to add weapons to prefab: {ex.Message}");
+            }
+
             // ── KR-67EX ──
             if (Plugin.EX_Enable.Value && !__instance.aircraft.Any(a => a.jsonKey == Plugin.EX_JsonKey))
             {
@@ -80,6 +90,36 @@ namespace IfritVariants.Patches
                 __instance.aircraft.Add(clone);
                 Plugin.R_CloneDef = clone;
                 Debug.Log($"[IfritVariants] KR-67R registered. Cost: ${clone.value}M, RCS: {clone.radarSize}");
+            }
+        }
+
+        private static void AddWeaponsToPrefab(AircraftDefinition original)
+        {
+            if (original.unitPrefab == null) return;
+
+            WeaponManager wm = original.unitPrefab.GetComponentInChildren<WeaponManager>();
+            if (wm == null)
+            {
+                Aircraft ac = original.unitPrefab.GetComponent<Aircraft>();
+                if (ac != null) wm = ac.weaponManager;
+            }
+            if (wm == null) return;
+
+            WeaponMount aam29Quad = Resources.FindObjectsOfTypeAll<WeaponMount>()
+                .FirstOrDefault(m => m.name.Equals("AAM2_quad_internalP", System.StringComparison.InvariantCultureIgnoreCase));
+            WeaponMount aam36Quad = Resources.FindObjectsOfTypeAll<WeaponMount>()
+                .FirstOrDefault(m => m.name.Equals("AAM4_quad_internalP", System.StringComparison.InvariantCultureIgnoreCase));
+
+            int[] pylonIndices = { 4, 5 };
+            foreach (int idx in pylonIndices)
+            {
+                if (idx >= wm.hardpointSets.Length) continue;
+                var options = wm.hardpointSets[idx].weaponOptions;
+
+                if (aam29Quad != null && !options.Contains(aam29Quad))
+                    options.Add(aam29Quad);
+                if (aam36Quad != null && !options.Contains(aam36Quad))
+                    options.Add(aam36Quad);
             }
         }
     }
