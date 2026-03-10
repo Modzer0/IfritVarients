@@ -555,3 +555,26 @@ Hangar.TrySpawnAircraft (PATCHED prefix flags clone)
     └── Spawner.SpawnAircraft (PATCHED postfix reassigns definition)
         └── Aircraft spawns with correct definition ✓
 ```
+
+
+---
+
+## BepInEx Config Integration
+
+Use BepInEx configuration to let users toggle features:
+
+```csharp
+// In your Plugin class:
+private static ConfigEntry<bool> enableVariant;
+private static ConfigEntry<float> variantCost;
+
+void Awake()
+{
+    enableVariant = Config.Bind("General", "EnableVariant", true,
+        "Enable the KR-67X SuperIfrit variant");
+    variantCost = Config.Bind("General", "VariantCost", 1000f,
+        "Cost of the variant in $M");
+}
+```
+
+Then check `enableVariant.Value` in your Encyclopedia patch before creating the clone.
