@@ -200,3 +200,126 @@ This ensures `Awake()` re-reads `Encyclopedia.i.aircraft` (which now includes yo
 ### Factory Production Dropdown
 
 The mission editor's `BuildingOptions` class generates the factory production dropdown from `Encyclopedia.i.GetAircraftAndVehicles()`, which returns `aircraft.Concat(vehicles)`. It filters out `disabled == true` entries. So if your clone is registered in Encyclopedia with `disabled = false`, it will automatically appear in the factory production type dropdown — no extra patches needed.
+
+
+---
+
+## Step 4: Make It Available at Airbases (In-Game Hangar)
+
+The in-game aircraft selection works through this chain:
+
+```
+Airbase.GetAvailableAircraft()
+  → iterates each Hangar on the airbase
+    → Hangar.GetAvailableAircraft()
+      → returns Hangar.availableAircraft[] (serialized on the prefab)
+```
+
+`Hangar.availableAircraft` is a serialized `AircraftDefinition[]` on the hangar prefab. Your clone won't be in this array by default because it's baked into the prefab.
+
+### Patch: Inject into Hangar.GetAvailableAircraft
+
+```csharp
+[HarmonyPatch(typeof(Hangar), "GetAvailableAircraft")]
+public static class HangarPatch
+{
+    [HarmonyPostfix]
+    public static void Postfix(Hangar __instance, ref AircraftDefinition[] __result)
+    {
+        // Only inject if the original aircraft is in this hangar's list
+        if (__result.Any(a => a.jsonKey == "KR-67A"))
+        {
+            var list = __result.ToList();
+            if (!list.Contains(yourClone))
+                list.Add(yourClone);
+            __result = list.ToArray();
+        }
+    }
+}
+```
+
+### Patch: Allow Spawning (CanSpawnAircraft)
+
+`Hangar.CanSpawnAircraft` checks `availableAircraft.Contains(definition)`. Patch it:
+
+```csharp
+[HarmonyPatch(typeof(Hangar), "CanSpawnAircraft")]
+public static class CanSpawnPatch
+{
+    [HarmonyPostfix]
+    public static void Postfix(
+        Hangar __instance,
+        AircraftDefinition definition,
+        ref bool __result)
+    {
+        if (!__result && definition == yourClone && __instance.Available)
+        {
+            // Allow if the original is available here
+            var origArray = (AircraftDefinition[])AccessTools
+                .Field(typeof(Hangar), "availableAircraft")
+                .GetValue(__instance);
+            if (origArray.Any(a => a.jsonKey == "KR-67A"))
+                __result = true;
+        }
+    }
+}
+```
+
+### Patch: Handle Spawning (TrySpawnAircraft + Spawner.SpawnAircraft)
+
+Since the clone shares the original's `unitPrefab`, the spawned `Aircraft` component will have `definition` pointing to the original. You need to reassign it post-spawn.
+
+```csharp
+// Flag when clone is being spawned
+private static bool spawningClone = false;
+
+[HarmonyPatch(typeof(Hangar), "TrySpawnAircraft")]
+public static class TrySpawnPatch
+{
+    [HarmonyPrefix]
+    public static void Prefix(AircraftDefinition definition)
+    {
+        spawningClone = (definition == yourClone);
+    }
+}
+
+[HarmonyPatch(typeof(Spawner), "SpawnAircraft")]
+public static class SpawnAircraftPatch
+{
+    [HarmonyPostfix]
+    public static void Postfix(Aircraft __result)
+    {
+        if (spawningClone && __result != null)
+        {
+            // Reassign definition to clone
+            var defField = AccessTools.Field(typeof(Unit), "definition");
+            defField.SetValue(__result, yourClone);
+            spawningClone = false;
+        }
+    }
+}
+```
+
+### Patch: Fix Preview in Selection Menu
+
+`AircraftSelectionMenu.SpawnPreview` reads `definition` from the spawned preview aircraft. Since the prefab's definition points to the original, the preview will show the wrong name/stats.
+
+```csharp
+[HarmonyPatch(typeof(AircraftSelectionMenu), "SpawnPreview")]
+public static class PreviewPatch
+{
+    [HarmonyPostfix]
+    public static void Postfix(AircraftSelectionMenu __instance)
+    {
+        var selectedField = AccessTools.Field(typeof(AircraftSelectionMenu), "selectedType");
+        var selectionField = AccessTools.Field(typeof(AircraftSelectionMenu), "aircraftSelection");
+        var indexField = AccessTools.Field(typeof(AircraftSelectionMenu), "selectionIndex");
+
+        var selection = (List<AircraftDefinition>)selectionField.GetValue(__instance);
+        int index = (int)indexField.GetValue(__instance);
+
+        if (selection[index] == yourClone)
+            selectedField.SetValue(__instance, yourClone);
+    }
+}
+```
