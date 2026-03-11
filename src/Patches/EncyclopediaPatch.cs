@@ -114,50 +114,32 @@ namespace IfritVariants.Patches
             }
 
             // Use Encyclopedia.WeaponLookup (populated by AfterLoad) to find mounts by jsonKey
-            WeaponMount aam26Quad = null;
+            // AAM-29 = AAM2, AAM-36 = AAM4
             WeaponMount aam29Quad = null;
+            WeaponMount aam36Quad = null;
 
             if (Encyclopedia.WeaponLookup != null)
             {
-                Encyclopedia.WeaponLookup.TryGetValue("AAM1_quad_internalP", out aam26Quad);
                 Encyclopedia.WeaponLookup.TryGetValue("AAM2_quad_internalP", out aam29Quad);
+                Encyclopedia.WeaponLookup.TryGetValue("AAM4_quad_internalP", out aam36Quad);
             }
 
             // Fallback to searching all loaded WeaponMount assets
-            if (aam26Quad == null || aam29Quad == null)
+            if (aam29Quad == null || aam36Quad == null)
             {
                 Plugin.Log("WeaponLookup miss, falling back to Resources search");
                 foreach (var m in Resources.FindObjectsOfTypeAll<WeaponMount>())
                 {
                     string key = m.jsonKey ?? m.name ?? "";
-                    if (aam26Quad == null && key == "AAM1_quad_internalP") aam26Quad = m;
                     if (aam29Quad == null && key == "AAM2_quad_internalP") aam29Quad = m;
+                    if (aam36Quad == null && key == "AAM4_quad_internalP") aam36Quad = m;
                 }
             }
 
-            // Second fallback: search by name
-            if (aam26Quad == null || aam29Quad == null)
-            {
-                Plugin.Log("jsonKey search miss, trying name search");
-                foreach (var m in encyclopedia.weaponMounts)
-                {
-                    if (aam26Quad == null && m.name == "AAM1_quad_internalP") aam26Quad = m;
-                    if (aam29Quad == null && m.name == "AAM2_quad_internalP") aam29Quad = m;
-                }
-            }
-
-            if (aam26Quad == null) Plugin.Log("WARN: Could not find AAM1_quad_internalP (AAM-26 quad)");
-            else Plugin.Log($"Found AAM-26 quad: name={aam26Quad.name}, jsonKey={aam26Quad.jsonKey}");
             if (aam29Quad == null) Plugin.Log("WARN: Could not find AAM2_quad_internalP (AAM-29 quad)");
             else Plugin.Log($"Found AAM-29 quad: name={aam29Quad.name}, jsonKey={aam29Quad.jsonKey}");
-
-            // Log all weapon mounts if we couldn't find them
-            if (aam26Quad == null || aam29Quad == null)
-            {
-                Plugin.Log("Dumping all encyclopedia weaponMounts:");
-                foreach (var m in encyclopedia.weaponMounts)
-                    Plugin.Log($"  {m.name} | jsonKey={m.jsonKey}");
-            }
+            if (aam36Quad == null) Plugin.Log("WARN: Could not find AAM4_quad_internalP (AAM-36 quad)");
+            else Plugin.Log($"Found AAM-36 quad: name={aam36Quad.name}, jsonKey={aam36Quad.jsonKey}");
 
             int[] pylonIndices = { 4, 5 };
             foreach (int idx in pylonIndices)
@@ -165,15 +147,15 @@ namespace IfritVariants.Patches
                 if (idx >= wm.hardpointSets.Length) continue;
                 var options = wm.hardpointSets[idx].weaponOptions;
 
-                if (aam26Quad != null && !options.Contains(aam26Quad))
-                {
-                    options.Add(aam26Quad);
-                    Plugin.Log($"Added AAM-26 quad to hardpoint {idx}");
-                }
                 if (aam29Quad != null && !options.Contains(aam29Quad))
                 {
                     options.Add(aam29Quad);
-                    Plugin.Log($"Added AAM-29 quad to hardpoint {idx}");
+                    Plugin.Log($"Added AAM-29 x4 to hardpoint {idx}");
+                }
+                if (aam36Quad != null && !options.Contains(aam36Quad))
+                {
+                    options.Add(aam36Quad);
+                    Plugin.Log($"Added AAM-36 x4 to hardpoint {idx}");
                 }
             }
         }
