@@ -1,10 +1,11 @@
 using HarmonyLib;
+using System;
 using System.Linq;
 using UnityEngine;
 
 namespace IfritVariants.Patches
 {
-    [HarmonyPatch(typeof(Encyclopedia), "AfterLoad")]
+    [HarmonyPatch(typeof(Encyclopedia), "AfterLoad", new Type[] { })]
     public static class EncyclopediaPatch
     {
         [HarmonyPrefix]
@@ -31,7 +32,7 @@ namespace IfritVariants.Patches
             // ── KR-67EX ──
             if (Plugin.EX_Enable.Value && !__instance.aircraft.Any(a => a.jsonKey == Plugin.EX_JsonKey))
             {
-                var clone = Object.Instantiate(original);
+                var clone = UnityEngine.Object.Instantiate(original);
                 clone.name = Plugin.EX_JsonKey;
                 clone.jsonKey = Plugin.EX_JsonKey;
                 clone.unitName = Plugin.EX_DisplayName;
@@ -40,7 +41,7 @@ namespace IfritVariants.Patches
                 clone.disabled = false;
                 clone.unitPrefab = original.unitPrefab;
 
-                clone.aircraftParameters = Object.Instantiate(original.aircraftParameters);
+                clone.aircraftParameters = UnityEngine.Object.Instantiate(original.aircraftParameters);
                 clone.aircraftParameters.aircraftName = Plugin.EX_DisplayName;
                 clone.aircraftParameters.aircraftDescription = Plugin.EX_Description;
                 clone.aircraftParameters.aircraftGLimit = Plugin.EX_GLimit.Value;
@@ -63,7 +64,7 @@ namespace IfritVariants.Patches
             // ── KR-67R ──
             if (Plugin.R_Enable.Value && !__instance.aircraft.Any(a => a.jsonKey == Plugin.R_JsonKey))
             {
-                var clone = Object.Instantiate(original);
+                var clone = UnityEngine.Object.Instantiate(original);
                 clone.name = Plugin.R_JsonKey;
                 clone.jsonKey = Plugin.R_JsonKey;
                 clone.unitName = Plugin.R_DisplayName;
@@ -73,7 +74,7 @@ namespace IfritVariants.Patches
                 clone.unitPrefab = original.unitPrefab;
                 clone.radarSize = original.radarSize / Plugin.R_RCSDivisor.Value;
 
-                clone.aircraftParameters = Object.Instantiate(original.aircraftParameters);
+                clone.aircraftParameters = UnityEngine.Object.Instantiate(original.aircraftParameters);
                 clone.aircraftParameters.aircraftName = Plugin.R_DisplayName;
                 clone.aircraftParameters.aircraftDescription = Plugin.R_Description;
                 clone.aircraftParameters.rankRequired = 0;
