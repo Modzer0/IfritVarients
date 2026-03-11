@@ -77,6 +77,9 @@ namespace IfritVariants
         internal static bool SpawningEX;
         internal static bool SpawningR;
 
+        private static BepInEx.Logging.ManualLogSource _log;
+        internal static void Log(string msg) => _log?.LogInfo($"[IfritVariants] {msg}");
+
         // ═══════════════════════════════════════════
         //  Helpers
         // ═══════════════════════════════════════════
@@ -101,6 +104,7 @@ namespace IfritVariants
 
         private void Awake()
         {
+            _log = Logger;
             // KR-67EX config
             EX_Enable = Config.Bind("KR-67EX", "Enable", true, "Enable the KR-67EX variant");
             EX_ThrustMultiplier = Config.Bind("KR-67EX", "ThrustMultiplier", 1.2f,

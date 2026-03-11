@@ -7,38 +7,38 @@ using UnityEngine;
 namespace IfritVariants.Patches.R
 {
     /// <summary>
-    /// Hide weapon options for KR-67R disabled hardpoints in the selection UI.
-    /// Disabled hardpoints: 0=gun, 1=forward bay, 4=inner pylon, 5=outer pylon.
+    /// Disable weapon selectors for KR-67R disabled hardpoints in the aircraft selection UI.
     /// </summary>
-    [HarmonyPatch(typeof(WeaponChecker), "GetAvailableWeaponsNonAlloc")]
-    public static class WeaponAvailabilityPatch
+    [HarmonyPatch(typeof(AircraftSelectionMenu), "ShowHardpoints")]
+    public static class ShowHardpointsPatch
     {
+        private static readonly FieldInfo aircraftSelectionField =
+            AccessTools.Field(typeof(AircraftSelectionMenu), "aircraftSelection");
+        private static readonly FieldInfo selectionIndexField =
+            AccessTools.Field(typeof(AircraftSelectionMenu), "selectionIndex");
+        private static readonly FieldInfo dropdownField =
+            AccessTools.Field(typeof(WeaponSelector), "dropdown");
+
         [HarmonyPostfix]
-        public static void Postfix(HardpointSet hardpointSet, List<WeaponMount> outAvailable)
+        public static void Postfix(AircraftSelectionMenu __instance)
         {
-            if (Plugin.R_CloneDef == null) return;
+            var selection = aircraftSelectionField?.GetValue(__instance) as List<AircraftDefinition>;
+            if (selection == null) return;
+            int index = (int)(selectionIndexField?.GetValue(__instance) ?? -1);
+            if (index < 0 || index >= selection.Count) return;
 
-            // Check if the currently selected aircraft in the menu is the KR-67R
-            var selMenu = Object.FindObjectOfType<AircraftSelectionMenu>();
-            if (selMenu == null) return;
-
-            var selectedField = AccessTools.Field(typeof(AircraftSelectionMenu), "selectedType");
-            var selectedDef = selectedField?.GetValue(selMenu) as AircraftDefinition;
+            var selectedDef = selection[index];
             if (selectedDef?.jsonKey != Plugin.R_JsonKey) return;
 
-            // Find which hardpoint index this HardpointSet corresponds to
-            WeaponManager wm = Plugin.R_CloneDef.unitPrefab?.GetComponent<Aircraft>()?.weaponManager;
-            if (wm == null) return;
-
-            for (int i = 0; i < wm.hardpointSets.Length; i++)
+            for (int i = 0; i < __instance.weaponSelectors.Count; i++)
             {
-                if (wm.hardpointSets[i] == hardpointSet &&
-                    System.Array.IndexOf(Plugin.R_DisabledHardpoints, i) >= 0)
+                if (System.Array.IndexOf(Plugin.R_DisabledHardpoints, i) >= 0)
                 {
-                    outAvailable.Clear();
-                    return;
+                    // Deactivate the entire weapon selector GameObject to hide it
+                    __instance.weaponSelectors[i].gameObject.SetActive(false);
                 }
             }
+            Plugin.Log("KR-67R: disabled weapon selectors for hardpoints 0,1,4,5");
         }
     }
 

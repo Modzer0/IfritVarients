@@ -15,18 +15,8 @@ namespace IfritVariants.Patches
                 .FirstOrDefault(a => a.jsonKey == Plugin.OriginalJsonKey);
             if (original == null)
             {
-                Debug.LogError("[IfritVariants] Could not find KR-67A (Multirole1) in Encyclopedia!");
+                Plugin.Log("Could not find KR-67A (Multirole1) in Encyclopedia!");
                 return;
-            }
-
-            // ── Add AAM-29/AAM-36 quad mounts to KR-67A prefab pylons ──
-            try
-            {
-                AddWeaponsToPrefab(original);
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogWarning($"[IfritVariants] Failed to add weapons to prefab: {ex.Message}");
             }
 
             // ── KR-67EX ──
@@ -58,7 +48,7 @@ namespace IfritVariants.Patches
 
                 __instance.aircraft.Add(clone);
                 Plugin.EX_CloneDef = clone;
-                Debug.Log($"[IfritVariants] KR-67EX registered. Cost: ${clone.value}M");
+                Plugin.Log($"KR-67EX registered. Cost: ${clone.value}M");
             }
 
             // ── KR-67R ──
@@ -90,41 +80,84 @@ namespace IfritVariants.Patches
 
                 __instance.aircraft.Add(clone);
                 Plugin.R_CloneDef = clone;
-                Debug.Log($"[IfritVariants] KR-67R registered. Cost: ${clone.value}M, RCS: {clone.radarSize}");
+                Plugin.Log($"KR-67R registered. Cost: ${clone.value}M, RCS: {clone.radarSize}");
             }
         }
 
-        private static void AddWeaponsToPrefab(AircraftDefinition original)
+        [HarmonyPostfix]
+        public static void Postfix(Encyclopedia __instance)
         {
-            if (original.unitPrefab == null) return;
-
-            WeaponManager wm = original.unitPrefab.GetComponentInChildren<WeaponManager>();
-            if (wm == null)
+            // Add quad AAM mounts to KR-67A pylons AFTER WeaponLookup is populated
+            try
             {
-                Aircraft ac = original.unitPrefab.GetComponent<Aircraft>();
-                if (ac != null) wm = ac.weaponManager;
+                AddWeaponsToPrefab(__instance);
             }
+            catch (Exception ex)
+            {
+                Plugin.Log($"Failed to add weapons to prefab: {ex}");
+            }
+        }
+
+        private static void AddWeaponsToPrefab(Encyclopedia encyclopedia)
+        {
+            AircraftDefinition original = encyclopedia.aircraft
+                .FirstOrDefault(a => a.jsonKey == Plugin.OriginalJsonKey);
+            if (original?.unitPrefab == null) return;
+
+            WeaponManager wm = original.unitPrefab.GetComponent<Aircraft>()?.weaponManager;
+            if (wm == null)
+                wm = original.unitPrefab.GetComponentInChildren<WeaponManager>();
             if (wm == null)
             {
-                Debug.LogWarning("[IfritVariants] AddWeapons: no WeaponManager found on prefab");
+                Plugin.Log("AddWeapons: no WeaponManager found on prefab");
                 return;
             }
 
-            // Find quad AAM mounts: AAM-26=AAM1, AAM-29=AAM2
-            var allMounts = Resources.FindObjectsOfTypeAll<WeaponMount>();
+            // Use Encyclopedia.WeaponLookup (populated by AfterLoad) to find mounts by jsonKey
+            WeaponMount aam26Quad = null;
+            WeaponMount aam29Quad = null;
 
-            WeaponMount aam26Quad = null; // AAM1_quad_internalP
-            WeaponMount aam29Quad = null; // AAM2_quad_internalP
-
-            foreach (var m in allMounts)
+            if (Encyclopedia.WeaponLookup != null)
             {
-                string key = m.jsonKey ?? m.name ?? "";
-                if (key == "AAM1_quad_internalP") aam26Quad = m;
-                if (key == "AAM2_quad_internalP") aam29Quad = m;
+                Encyclopedia.WeaponLookup.TryGetValue("AAM1_quad_internalP", out aam26Quad);
+                Encyclopedia.WeaponLookup.TryGetValue("AAM2_quad_internalP", out aam29Quad);
             }
 
-            if (aam26Quad == null) Debug.LogWarning("[IfritVariants] Could not find AAM1_quad_internalP (AAM-26 quad)");
-            if (aam29Quad == null) Debug.LogWarning("[IfritVariants] Could not find AAM2_quad_internalP (AAM-29 quad)");
+            // Fallback to searching all loaded WeaponMount assets
+            if (aam26Quad == null || aam29Quad == null)
+            {
+                Plugin.Log("WeaponLookup miss, falling back to Resources search");
+                foreach (var m in Resources.FindObjectsOfTypeAll<WeaponMount>())
+                {
+                    string key = m.jsonKey ?? m.name ?? "";
+                    if (aam26Quad == null && key == "AAM1_quad_internalP") aam26Quad = m;
+                    if (aam29Quad == null && key == "AAM2_quad_internalP") aam29Quad = m;
+                }
+            }
+
+            // Second fallback: search by name
+            if (aam26Quad == null || aam29Quad == null)
+            {
+                Plugin.Log("jsonKey search miss, trying name search");
+                foreach (var m in encyclopedia.weaponMounts)
+                {
+                    if (aam26Quad == null && m.name == "AAM1_quad_internalP") aam26Quad = m;
+                    if (aam29Quad == null && m.name == "AAM2_quad_internalP") aam29Quad = m;
+                }
+            }
+
+            if (aam26Quad == null) Plugin.Log("WARN: Could not find AAM1_quad_internalP (AAM-26 quad)");
+            else Plugin.Log($"Found AAM-26 quad: name={aam26Quad.name}, jsonKey={aam26Quad.jsonKey}");
+            if (aam29Quad == null) Plugin.Log("WARN: Could not find AAM2_quad_internalP (AAM-29 quad)");
+            else Plugin.Log($"Found AAM-29 quad: name={aam29Quad.name}, jsonKey={aam29Quad.jsonKey}");
+
+            // Log all weapon mounts if we couldn't find them
+            if (aam26Quad == null || aam29Quad == null)
+            {
+                Plugin.Log("Dumping all encyclopedia weaponMounts:");
+                foreach (var m in encyclopedia.weaponMounts)
+                    Plugin.Log($"  {m.name} | jsonKey={m.jsonKey}");
+            }
 
             int[] pylonIndices = { 4, 5 };
             foreach (int idx in pylonIndices)
@@ -135,12 +168,12 @@ namespace IfritVariants.Patches
                 if (aam26Quad != null && !options.Contains(aam26Quad))
                 {
                     options.Add(aam26Quad);
-                    Debug.Log($"[IfritVariants] Added AAM-26 quad to hardpoint {idx}");
+                    Plugin.Log($"Added AAM-26 quad to hardpoint {idx}");
                 }
                 if (aam29Quad != null && !options.Contains(aam29Quad))
                 {
                     options.Add(aam29Quad);
-                    Debug.Log($"[IfritVariants] Added AAM-29 quad to hardpoint {idx}");
+                    Plugin.Log($"Added AAM-29 quad to hardpoint {idx}");
                 }
             }
         }
