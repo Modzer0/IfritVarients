@@ -70,11 +70,41 @@ namespace IfritVariants.Patches
             {
                 defField?.SetValue(__result, Plugin.EX_CloneDef);
                 Plugin.SpawningEX = false;
+                Debug.Log("[IfritVariants] SpawnerPatch: set definition to KR-67EX");
             }
             else if (Plugin.SpawningR)
             {
                 defField?.SetValue(__result, Plugin.R_CloneDef);
                 Plugin.SpawningR = false;
+                Debug.Log("[IfritVariants] SpawnerPatch: set definition to KR-67R");
+                ApplyKR67R(__result);
+            }
+        }
+
+        private static void ApplyKR67R(Aircraft aircraft)
+        {
+            // Disable radar
+            Radar radar = aircraft.GetComponentInChildren<Radar>();
+            if (radar != null)
+            {
+                radar.activated = false;
+                radar.enabled = false;
+                Debug.Log("[IfritVariants] KR-67R: radar disabled");
+            }
+
+            // Disable hardpoints: 0=gun, 1=forward bay, 4=inner pylon, 5=outer pylon
+            WeaponManager wm = aircraft.weaponManager;
+            if (wm != null)
+            {
+                foreach (int idx in Plugin.R_DisabledHardpoints)
+                {
+                    if (idx < wm.hardpointSets.Length)
+                    {
+                        wm.hardpointSets[idx].weaponOptions.Clear();
+                        wm.hardpointSets[idx].weaponMount = null;
+                        Debug.Log($"[IfritVariants] KR-67R: cleared hardpoint {idx}");
+                    }
+                }
             }
         }
     }

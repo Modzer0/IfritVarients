@@ -104,12 +104,60 @@ namespace IfritVariants.Patches
                 Aircraft ac = original.unitPrefab.GetComponent<Aircraft>();
                 if (ac != null) wm = ac.weaponManager;
             }
-            if (wm == null) return;
+            if (wm == null)
+            {
+                Debug.LogWarning("[IfritVariants] AddWeapons: no WeaponManager found on prefab");
+                return;
+            }
 
-            WeaponMount aam29Quad = Resources.FindObjectsOfTypeAll<WeaponMount>()
-                .FirstOrDefault(m => m.name.Equals("AAM2_quad_internalP", System.StringComparison.InvariantCultureIgnoreCase));
-            WeaponMount aam36Quad = Resources.FindObjectsOfTypeAll<WeaponMount>()
-                .FirstOrDefault(m => m.name.Equals("AAM4_quad_internalP", System.StringComparison.InvariantCultureIgnoreCase));
+            // Log existing pylon options for debugging
+            for (int i = 0; i < wm.hardpointSets.Length; i++)
+            {
+                var hs = wm.hardpointSets[i];
+                var names = string.Join(", ", hs.weaponOptions.ConvertAll(w => w != null ? $"{w.name}({w.jsonKey})" : "null"));
+                Debug.Log($"[IfritVariants] Hardpoint {i} '{hs.name}': [{names}]");
+            }
+
+            // Find quad AAM mounts by partial name/jsonKey match
+            var allMounts = Resources.FindObjectsOfTypeAll<WeaponMount>();
+            Debug.Log($"[IfritVariants] Total WeaponMounts found: {allMounts.Length}");
+
+            WeaponMount aam29Quad = null;
+            WeaponMount aam36Quad = null;
+
+            foreach (var m in allMounts)
+            {
+                string n = m.name?.ToLowerInvariant() ?? "";
+                string k = m.jsonKey?.ToLowerInvariant() ?? "";
+
+                // AAM-29 quad (AAM2 in game code)
+                if (aam29Quad == null && (n.Contains("aam2") || k.Contains("aam2")) && (n.Contains("quad") || k.Contains("quad")))
+                {
+                    aam29Quad = m;
+                    Debug.Log($"[IfritVariants] Found AAM-29 quad: name={m.name}, jsonKey={m.jsonKey}");
+                }
+                // AAM-36 quad (AAM4 in game code)
+                if (aam36Quad == null && (n.Contains("aam4") || k.Contains("aam4")) && (n.Contains("quad") || k.Contains("quad")))
+                {
+                    aam36Quad = m;
+                    Debug.Log($"[IfritVariants] Found AAM-36 quad: name={m.name}, jsonKey={m.jsonKey}");
+                }
+            }
+
+            if (aam29Quad == null)
+                Debug.LogWarning("[IfritVariants] Could not find AAM-29 quad mount. Logging all AAM mounts:");
+            if (aam36Quad == null)
+                Debug.LogWarning("[IfritVariants] Could not find AAM-36 quad mount. Logging all AAM mounts:");
+
+            if (aam29Quad == null || aam36Quad == null)
+            {
+                foreach (var m in allMounts)
+                {
+                    string n = m.name?.ToLowerInvariant() ?? "";
+                    if (n.Contains("aam") || n.Contains("missile") || n.Contains("internal"))
+                        Debug.Log($"[IfritVariants]   mount: name={m.name}, jsonKey={m.jsonKey}, mountName={m.mountName}");
+                }
+            }
 
             int[] pylonIndices = { 4, 5 };
             foreach (int idx in pylonIndices)
@@ -118,9 +166,15 @@ namespace IfritVariants.Patches
                 var options = wm.hardpointSets[idx].weaponOptions;
 
                 if (aam29Quad != null && !options.Contains(aam29Quad))
+                {
                     options.Add(aam29Quad);
+                    Debug.Log($"[IfritVariants] Added {aam29Quad.name} to hardpoint {idx}");
+                }
                 if (aam36Quad != null && !options.Contains(aam36Quad))
+                {
                     options.Add(aam36Quad);
+                    Debug.Log($"[IfritVariants] Added {aam36Quad.name} to hardpoint {idx}");
+                }
             }
         }
     }

@@ -5,22 +5,25 @@ using UnityEngine;
 namespace IfritVariants.Patches.R
 {
     /// <summary>
-    /// Disable radar on KR-67R. Recon variant has no radar — only optical sensors.
+    /// Keep radar permanently off on KR-67R. The initial disable happens in
+    /// SpawnerPatch.ApplyKR67R, but we also need to block FixedUpdate power draw
+    /// and prevent the player from toggling it back on.
     /// </summary>
-    [HarmonyPatch(typeof(Radar), "Awake")]
-    public static class RadarDisablePatch
+    [HarmonyPatch(typeof(Radar), "FixedUpdate")]
+    public static class RadarFixedUpdatePatch
     {
-        private static readonly FieldInfo attachedUnitField =
-            AccessTools.Field(typeof(TargetDetector), "attachedUnit");
-
-        [HarmonyPostfix]
-        public static void Postfix(Radar __instance)
+        [HarmonyPrefix]
+        public static bool Prefix(Radar __instance)
         {
-            var unit = attachedUnitField?.GetValue(__instance) as Unit;
-            var aircraft = unit as Aircraft;
-            if (!Plugin.IsKR67R(aircraft)) return;
-
-            __instance.activated = false;
+            // Skip FixedUpdate entirely for KR-67R radars (no power draw, no scanning)
+            var unit = AccessTools.Field(typeof(TargetDetector), "attachedUnit")
+                ?.GetValue(__instance) as Unit;
+            if (unit is Aircraft ac && Plugin.IsKR67R(ac))
+            {
+                __instance.activated = false;
+                return false;
+            }
+            return true;
         }
     }
 
@@ -34,7 +37,7 @@ namespace IfritVariants.Patches.R
         public static bool Prefix(Aircraft __instance)
         {
             if (Plugin.IsKR67R(__instance))
-                return false; // Block radar toggle
+                return false;
             return true;
         }
     }

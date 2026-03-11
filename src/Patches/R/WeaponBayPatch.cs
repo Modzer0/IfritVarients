@@ -7,33 +7,9 @@ using UnityEngine;
 namespace IfritVariants.Patches.R
 {
     /// <summary>
-    /// Disable hardpoints 0 (gun), 1 (forward bay), 4 (inner pylon), 5 (outer pylon) for KR-67R.
+    /// UI and loadout validation for KR-67R disabled hardpoints.
+    /// Runtime hardpoint clearing is done in SpawnerPatch.ApplyKR67R.
     /// </summary>
-    [HarmonyPatch(typeof(Spawner), "SpawnAircraft")]
-    public static class WeaponBaySpawnPatch
-    {
-        private static readonly FieldInfo defField =
-            AccessTools.Field(typeof(Unit), "definition");
-
-        [HarmonyPostfix]
-        public static void Postfix(Aircraft __result)
-        {
-            if (__result == null) return;
-
-            var def = defField?.GetValue(__result) as AircraftDefinition;
-            if (def == null || def.jsonKey != Plugin.R_JsonKey) return;
-
-            WeaponManager wm = __result.weaponManager;
-            if (wm == null) return;
-
-            foreach (int idx in Plugin.R_DisabledHardpoints)
-            {
-                if (idx < wm.hardpointSets.Length)
-                    wm.hardpointSets[idx].weaponMount = null;
-            }
-        }
-    }
-
     [HarmonyPatch(typeof(WeaponSelector), "PopulateOptions")]
     public static class WeaponSelectorPatch
     {
