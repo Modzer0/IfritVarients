@@ -10,7 +10,7 @@ namespace IfritVariants
     {
         public const string PluginGUID = "com.nuclearoption.ifritvariants";
         public const string PluginName = "Ifrit Variants";
-        public const string PluginVersion = "1.1.0";
+        public const string PluginVersion = "1.2.0";
 
         // ═══════════════════════════════════════════
         //  KR-67EX Constants

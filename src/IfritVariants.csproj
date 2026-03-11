@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyName>IfritVariants_v1.0</AssemblyName>
-    <Version>1.1.0</Version>
+    <AssemblyName>IfritVariants_v1.2</AssemblyName>
+    <Version>1.2.0</Version>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
