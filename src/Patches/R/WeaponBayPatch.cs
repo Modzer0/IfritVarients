@@ -7,32 +7,44 @@ using UnityEngine;
 namespace IfritVariants.Patches.R
 {
     /// <summary>
-    /// UI and loadout validation for KR-67R disabled hardpoints.
-    /// Runtime hardpoint clearing is done in SpawnerPatch.ApplyKR67R.
+    /// Hide weapon options for KR-67R disabled hardpoints in the selection UI.
+    /// Disabled hardpoints: 0=gun, 1=forward bay, 4=inner pylon, 5=outer pylon.
     /// </summary>
-    [HarmonyPatch(typeof(WeaponSelector), "PopulateOptions")]
-    public static class WeaponSelectorPatch
+    [HarmonyPatch(typeof(WeaponChecker), "GetAvailableWeaponsNonAlloc")]
+    public static class WeaponAvailabilityPatch
     {
         [HarmonyPostfix]
-        public static void Postfix(WeaponSelector __instance, int hardpointSetIndex)
+        public static void Postfix(HardpointSet hardpointSet, List<WeaponMount> outAvailable)
         {
             if (Plugin.R_CloneDef == null) return;
-            if (System.Array.IndexOf(Plugin.R_DisabledHardpoints, hardpointSetIndex) < 0) return;
 
-            var selMenuField = AccessTools.Field(typeof(AircraftSelectionMenu), "selectedType");
+            // Check if the currently selected aircraft in the menu is the KR-67R
             var selMenu = Object.FindObjectOfType<AircraftSelectionMenu>();
             if (selMenu == null) return;
 
-            var selectedDef = selMenuField?.GetValue(selMenu) as AircraftDefinition;
-            if (selectedDef?.jsonKey == Plugin.R_JsonKey)
+            var selectedField = AccessTools.Field(typeof(AircraftSelectionMenu), "selectedType");
+            var selectedDef = selectedField?.GetValue(selMenu) as AircraftDefinition;
+            if (selectedDef?.jsonKey != Plugin.R_JsonKey) return;
+
+            // Find which hardpoint index this HardpointSet corresponds to
+            WeaponManager wm = Plugin.R_CloneDef.unitPrefab?.GetComponent<Aircraft>()?.weaponManager;
+            if (wm == null) return;
+
+            for (int i = 0; i < wm.hardpointSets.Length; i++)
             {
-                var optionsField = AccessTools.Field(typeof(WeaponSelector), "options");
-                var options = optionsField?.GetValue(__instance) as List<WeaponMount>;
-                options?.Clear();
+                if (wm.hardpointSets[i] == hardpointSet &&
+                    System.Array.IndexOf(Plugin.R_DisabledHardpoints, i) >= 0)
+                {
+                    outAvailable.Clear();
+                    return;
+                }
             }
         }
     }
 
+    /// <summary>
+    /// Strip disabled hardpoint weapons from loadout validation.
+    /// </summary>
     [HarmonyPatch(typeof(WeaponChecker), "VetLoadout")]
     public static class VetLoadoutPatch
     {
