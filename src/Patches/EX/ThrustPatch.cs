@@ -17,17 +17,19 @@ namespace IfritVariants.Patches.EX
         private static readonly Dictionary<int, float> origMaxThrust = new();
         private static bool logged;
 
-        // Flat curve: full thrust at all altitudes, ClampForever so it never extrapolates to 0
-        private static readonly AnimationCurve flatCurve;
+        // Thrust tapers above 10km, hits 0 above ceiling. ClampForever keeps it at 0 beyond.
+        private static readonly AnimationCurve altCurve;
 
         static ThrustPatch()
         {
-            flatCurve = new AnimationCurve(
+            altCurve = new AnimationCurve(
                 new Keyframe(0f, 1f),
-                new Keyframe(Plugin.EX_ServiceCeilingMeters, 1f)
+                new Keyframe(10000f, 0.85f),
+                new Keyframe(Plugin.EX_ServiceCeilingMeters, 0.4f),  // 60,000 ft
+                new Keyframe(Plugin.EX_ServiceCeilingMeters + 2000f, 0f)
             );
-            flatCurve.preWrapMode = WrapMode.ClampForever;
-            flatCurve.postWrapMode = WrapMode.ClampForever;
+            altCurve.preWrapMode = WrapMode.ClampForever;
+            altCurve.postWrapMode = WrapMode.ClampForever;
         }
 
         [HarmonyPrefix]
@@ -48,7 +50,7 @@ namespace IfritVariants.Patches.EX
             if ((float)minDensityField.GetValue(__instance) > -0.5f)
                 minDensityField.SetValue(__instance, -1f);
 
-            altitudeThrustField.SetValue(__instance, flatCurve);
+            altitudeThrustField.SetValue(__instance, altCurve);
 
             if (!logged)
             {
