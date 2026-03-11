@@ -14,7 +14,7 @@ namespace IfritVariants.Patches.EX
         public static void Postfix(SpeedGauge __instance, Aircraft aircraft)
         {
             if (Plugin.IsKR67EX(aircraft))
-                overspeedField.SetValue(__instance, Plugin.EX_MaxSpeedMs.Value);
+                overspeedField.SetValue(__instance, float.MaxValue); // No overspeed
         }
     }
 
@@ -31,7 +31,7 @@ namespace IfritVariants.Patches.EX
         {
             var aircraft = aircraftField?.GetValue(__instance) as Aircraft;
             if (Plugin.IsKR67EX(aircraft))
-                overspeedField.SetValue(__instance, Plugin.EX_MaxSpeedMs.Value);
+                overspeedField.SetValue(__instance, float.MaxValue); // No overspeed
         }
     }
 }

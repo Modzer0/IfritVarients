@@ -39,7 +39,7 @@ namespace IfritVariants.Patches.EX
 
                 float baseThrust = origMaxThrust[id];
                 maxThrustField.SetValue(__instance, baseThrust * Plugin.EX_ThrustMultiplier.Value);
-                maxSpeedField.SetValue(__instance, Plugin.EX_MaxSpeedMs.Value);
+                maxSpeedField.SetValue(__instance, float.MaxValue); // No speed limit
                 minDensityField.SetValue(__instance, -1f);
 
                 AnimationCurve flatCurve = new AnimationCurve(
